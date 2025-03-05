@@ -1,74 +1,188 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';
+import { Link, NavLink } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      window.location.href = `/recherche?q=${encodeURIComponent(searchTerm)}`;
-    }
+  // Catégories définies dans le brief
+  const categories = [
+    { id: 1, nom: 'Bâtiment', slug: 'batiment' },
+    { id: 2, nom: 'Services', slug: 'services' },
+    { id: 3, nom: 'Fabrication', slug: 'fabrication' },
+    { id: 4, nom: 'Alimentation', slug: 'alimentation' }
+  ];
+
+  // Couleurs de la palette
+  const colors = {
+    lightBlue: '#f1f8fc',
+    blue: '#0074c7',
+    darkBlue: '#00497c',
+    darkGrey: '#384050',
+    red: '#cd2c2e',
+    green: '#82b864'
   };
 
-  const isActive = (path) => {
-    return location.pathname === path ? 'active' : '';
+  // Styles pour le header
+  const headerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0',
+    backgroundColor: colors.lightBlue,
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+    height: 'auto'
+  };
+
+  const containerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '0 15px'
+  };
+
+  // Style pour le logo
+  const logoStyle = {
+    height: '100px',
+    width: 'auto',
+    display: 'block'
+  };
+
+  // Fonction pour fermer le menu mobile après clic sur un lien
+  const handleLinkClick = () => {
+    if (menuOpen) setMenuOpen(false);
   };
 
   return (
-    <header className="header">
-      <div className="container header__container">
-        <div className="header__logo">
-          <Link to="/">
-            <img src="/assets/images/logo.png" alt="Trouve ton artisan" className="header__logo-img" />
-          </Link>
+    <header style={headerStyle}>
+      <div style={containerStyle}>
+        <Link to="/" style={{ textDecoration: 'none', display: 'block', height: '100px' }} onClick={handleLinkClick}>
+          <img 
+            src="/assets/images/logo.png" 
+            alt="Trouve ton artisan" 
+            style={logoStyle}
+          />
+        </Link>
+        
+        {/* Bouton hamburger pour mobile */}
+        <div 
+          style={{ 
+            display: 'none', 
+            '@media (max-width: 768px)': { 
+              display: 'block',
+              cursor: 'pointer',
+              color: colors.darkBlue,
+              fontSize: '24px'
+            }
+          }}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
-
-        <nav className="header__nav">
-          <ul className="header__menu">
-            <li>
-              <Link to="/" className={isActive('/')}>
+        
+        {/* Navigation */}
+        <nav style={{ 
+          flex: 1, 
+          display: 'flex', 
+          justifyContent: 'flex-end',
+          '@media (max-width: 768px)': {
+            display: menuOpen ? 'block' : 'none',
+            position: 'absolute',
+            top: '100px',
+            left: 0,
+            right: 0,
+            backgroundColor: colors.lightBlue,
+            zIndex: 100,
+            padding: '20px 0',
+            boxShadow: '0 5px 10px rgba(0, 0, 0, 0.1)'
+          }
+        }}>
+          <ul style={{ 
+            display: 'flex', 
+            listStyle: 'none', 
+            margin: 0, 
+            padding: 0,
+            '@media (max-width: 768px)': {
+              flexDirection: 'column',
+              width: '100%'
+            }
+          }}>
+            <li style={{ 
+              margin: '0 15px',
+              '@media (max-width: 768px)': {
+                margin: '10px 0',
+                textAlign: 'center'
+              }
+            }}>
+              <NavLink 
+                to="/" 
+                end 
+                style={({ isActive }) => ({
+                  textDecoration: 'none',
+                  color: isActive ? 'white' : colors.darkBlue,
+                  fontWeight: 'bold',
+                  padding: '8px 12px',
+                  borderRadius: '4px',
+                  backgroundColor: isActive ? colors.blue : 'transparent',
+                  display: 'block'
+                })}
+                onClick={handleLinkClick}
+              >
                 Accueil
-              </Link>
+              </NavLink>
             </li>
-            <li>
-              <Link to="/categories" className={isActive('/categories')}>
-                Catégories
-              </Link>
-            </li>
-            <li>
-              <Link to="/artisans" className={isActive('/artisans')}>
-                Artisans
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className={isActive('/about')}>
+            {categories.map(category => (
+              <li key={category.id} style={{ 
+                margin: '0 15px',
+                '@media (max-width: 768px)': {
+                  margin: '10px 0',
+                  textAlign: 'center'
+                }
+              }}>
+                <NavLink 
+                  to={`/categories/${category.slug}`}
+                  style={({ isActive }) => ({
+                    textDecoration: 'none',
+                    color: isActive ? 'white' : colors.darkBlue,
+                    fontWeight: 'bold',
+                    padding: '8px 12px',
+                    borderRadius: '4px',
+                    backgroundColor: isActive ? colors.blue : 'transparent',
+                    display: 'block'
+                  })}
+                  onClick={handleLinkClick}
+                >
+                  {category.nom}
+                </NavLink>
+              </li>
+            ))}
+            <li style={{ 
+              margin: '0 15px',
+              '@media (max-width: 768px)': {
+                margin: '10px 0',
+                textAlign: 'center'
+              }
+            }}>
+              <NavLink 
+                to="/about" 
+                style={({ isActive }) => ({
+                  textDecoration: 'none',
+                  color: isActive ? 'white' : colors.darkBlue,
+                  fontWeight: 'bold',
+                  padding: '8px 12px',
+                  borderRadius: '4px',
+                  backgroundColor: isActive ? colors.blue : 'transparent',
+                  display: 'block'
+                })}
+                onClick={handleLinkClick}
+              >
                 À propos
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className={isActive('/contact')}>
-                Contact
-              </Link>
+              </NavLink>
             </li>
           </ul>
-
-          <div className="header__search">
-            <form onSubmit={handleSearch}>
-              <input
-                type="text"
-                placeholder="Rechercher un artisan..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="form-control"
-              />
-              <button type="submit">
-                <FaSearch />
-              </button>
-            </form>
-          </div>
         </nav>
       </div>
     </header>

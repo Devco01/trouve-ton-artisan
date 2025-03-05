@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaSearch, FaTools } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
 import '../styles/pages/not-found.scss';
 
 const NotFound = () => {
@@ -29,12 +29,6 @@ const NotFound = () => {
           <div className="not-found-actions">
             <Link to="/" className="btn btn-primary">
               <FaHome /> Retour à l'accueil
-            </Link>
-            <Link to="/search" className="btn btn-primary">
-              <FaSearch /> Rechercher un artisan
-            </Link>
-            <Link to="/categories" className="btn btn-primary">
-              <FaTools /> Explorer les catégories
             </Link>
           </div>
           

@@ -4,30 +4,30 @@ const HomeSteps = () => {
   const steps = [
     {
       number: 1,
-      title: "Recherchez",
-      description: "Trouvez l'artisan idéal en fonction de votre besoin et de votre localisation."
+      title: "Choisir la catégorie",
+      description: "Choisir la catégorie d'artisanat dans le menu."
     },
     {
       number: 2,
-      title: "Comparez",
-      description: "Consultez les profils, les avis et les tarifs pour faire le meilleur choix."
+      title: "Choisir un artisan",
+      description: "Choisir un artisan parmi les professionnels disponibles."
     },
     {
       number: 3,
-      title: "Contactez",
-      description: "Prenez contact directement avec l'artisan pour discuter de votre projet."
+      title: "Contacter l'artisan",
+      description: "Le contacter via le formulaire de contact."
     },
     {
       number: 4,
-      title: "Évaluez",
-      description: "Après la prestation, partagez votre expérience pour aider la communauté."
+      title: "Réponse sous 48h",
+      description: "Une réponse sera apportée sous 48h."
     }
   ];
 
   return (
     <section className="home-steps">
       <div className="container">
-        <h2 className="home-steps__title">Comment ça marche ?</h2>
+        <h2 className="home-steps__title">Comment trouver mon artisan ?</h2>
         
         <div className="home-steps__container">
           {steps.map((step) => (

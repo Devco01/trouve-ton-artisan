@@ -152,7 +152,7 @@ const About = () => {
             souhaitant rejoindre notre plateforme, nous sommes là pour vous accompagner.
           </p>
           <div className="cta-section__buttons">
-            <Link to="/search" className="btn btn-primary">Trouver un artisan</Link>
+            <Link to="/" className="btn btn-primary">Trouver un artisan</Link>
             <Link to="/contact" className="btn btn-contact">Nous contacter</Link>
           </div>
         </section>

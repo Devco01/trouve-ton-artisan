@@ -14,7 +14,7 @@ const FeaturedArtisans = () => {
       try {
         setLoading(true);
         // Récupérer les artisans avec le paramètre "featured=true"
-        const data = await artisanService.getAll({ featured: true, limit: 4 });
+        const data = await artisanService.getAll({ featured: true, limit: 3 });
         setArtisans(data);
         setError(null);
       } catch (err) {
@@ -29,7 +29,7 @@ const FeaturedArtisans = () => {
             image: "/assets/images/artisans/artisan-1.jpg",
             note: 4.8,
             nombreAvis: 124,
-            specialite: "Plombier",
+            specialite: { nom: "Plomberie" },
             ville: "Lyon",
             codePostal: "69001",
             description: "Plombier expérimenté avec plus de 15 ans d'expérience. Spécialisé dans les installations sanitaires et le dépannage d'urgence.",
@@ -41,7 +41,7 @@ const FeaturedArtisans = () => {
             image: "/assets/images/artisans/artisan-2.jpg",
             note: 4.9,
             nombreAvis: 87,
-            specialite: "Électricienne",
+            specialite: { nom: "Électricité" },
             ville: "Grenoble",
             codePostal: "38000",
             description: "Électricienne qualifiée pour tous vos travaux d'installation, de rénovation et de mise aux normes électriques.",
@@ -53,23 +53,11 @@ const FeaturedArtisans = () => {
             image: "/assets/images/artisans/artisan-3.jpg",
             note: 4.7,
             nombreAvis: 56,
-            specialite: "Menuisier",
+            specialite: { nom: "Menuiserie" },
             ville: "Saint-Étienne",
             codePostal: "42000",
             description: "Menuisier ébéniste spécialisé dans la fabrication et la restauration de meubles sur mesure et d'aménagements intérieurs.",
             telephone: "0477456789"
-          },
-          {
-            id: 4,
-            nom: "Sophie Leroy",
-            image: "/assets/images/artisans/artisan-4.jpg",
-            note: 4.6,
-            nombreAvis: 42,
-            specialite: "Peintre",
-            ville: "Annecy",
-            codePostal: "74000",
-            description: "Peintre décoratrice proposant des prestations de qualité pour vos intérieurs et extérieurs. Conseils en décoration offerts.",
-            telephone: "0450789123"
           }
         ]);
       } finally {
@@ -82,33 +70,31 @@ const FeaturedArtisans = () => {
 
   return (
     <section className="featured-artisans">
-      <div className="container">
-        <h2 className="featured-artisans__title">Nos artisans en vedette</h2>
-        
-        {loading ? (
-          <div className="text-center">
-            <p>Chargement des artisans en vedette...</p>
+      <h2 className="section-title">Les artisans du mois</h2>
+      
+      {loading ? (
+        <div className="text-center">
+          <p>Chargement des artisans du mois...</p>
+        </div>
+      ) : error ? (
+        <div className="text-center">
+          <p className="text-danger">{error}</p>
+        </div>
+      ) : (
+        <>
+          <div className="featured-artisans__container">
+            {artisans.map((artisan) => (
+              <ArtisanCard key={artisan.id} artisan={artisan} />
+            ))}
           </div>
-        ) : error ? (
-          <div className="text-center">
-            <p className="text-danger">{error}</p>
+          
+          <div className="text-center mt-5">
+            <Link to="/artisans" className="btn btn-primary">
+              Voir tous les artisans
+            </Link>
           </div>
-        ) : (
-          <>
-            <div className="featured-artisans__container">
-              {artisans.map((artisan) => (
-                <ArtisanCard key={artisan.id} artisan={artisan} />
-              ))}
-            </div>
-            
-            <div className="text-center mt-5">
-              <Link to="/artisans" className="btn btn-primary">
-                Voir tous les artisans
-              </Link>
-            </div>
-          </>
-        )}
-      </div>
+        </>
+      )}
     </section>
   );
 };
