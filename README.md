@@ -37,7 +37,7 @@ La plateforme permet de :
 
 1. Cloner le dépôt
 ```bash
-git clone <url-du-depot>
+git clone https://github.com/Devco01/trouve-ton-artisan
 cd trouve-ton-artisan
 ```
 
