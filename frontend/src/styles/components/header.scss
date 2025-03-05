@@ -1,0 +1,227 @@
+@import '../variables';
+
+.header {
+  background-color: #f1f8fc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $spacing-md;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 90px;
+    
+    @media (max-width: 768px) {
+      padding: 0 $spacing-sm;
+    }
+  }
+  
+  &__logo {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    
+    img {
+      height: 90px;
+      object-fit: contain;
+    }
+    
+    @media (max-width: 768px) {
+      height: 70px;
+      
+      img {
+        height: 70px;
+      }
+    }
+  }
+  
+  &__nav {
+    display: flex;
+    align-items: center;
+    
+    @media (max-width: 768px) {
+      position: absolute;
+      top: 90px;
+      left: 0;
+      right: 0;
+      background-color: #f1f8fc;
+      padding: $spacing-md;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+      align-items: center;
+      display: none;
+      
+      &.open {
+        display: flex;
+      }
+    }
+  }
+  
+  &__menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+  
+  &__menu-item {
+    margin: 0 $spacing-sm;
+    
+    @media (max-width: 768px) {
+      margin: $spacing-xs 0;
+      text-align: center;
+    }
+  }
+  
+  &__link {
+    text-decoration: none;
+    color: #00497c;
+    font-weight: bold;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: rgba(0, 116, 199, 0.1);
+    }
+    
+    &.active {
+      background-color: #0074c7;
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      display: block;
+      padding: $spacing-sm;
+    }
+  }
+  
+  &__hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #00497c;
+    
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    height: auto;
+    padding: 1rem 0;
+    
+    &__container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    &__logo {
+      margin-bottom: 1rem;
+      height: 80px;
+      
+      img {
+        height: 80px;
+      }
+    }
+    
+    &__menu {
+      li {
+        margin: 0 1rem;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    &__container {
+      flex-direction: column;
+    }
+  
+    &__logo {
+      margin-bottom: 1.5rem;
+      height: 60px;
+      
+      img {
+        height: 60px;
+      }
+    }
+  
+    &__nav {
+      width: 100%;
+    }
+  
+    &__menu {
+      flex-wrap: wrap;
+      
+      li {
+        margin: 0.5rem 1rem;
+      }
+    }
+  
+    &__search {
+      width: 100%;
+      
+      form {
+        width: 100%;
+        
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// Styles pour les boutons de recherche
+.search-button {
+  background-color: #0074c7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: $spacing-xs $spacing-sm;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: #00497c;
+  }
+}
+
+// Styles pour les boutons d'action
+.action-button {
+  background-color: #82b864;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: $spacing-xs $spacing-sm;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: darken(#82b864, 10%);
+  }
+}
+
+// Styles pour les alertes ou notifications
+.notification {
+  background-color: #cd2c2e;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+} 

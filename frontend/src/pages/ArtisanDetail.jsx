@@ -30,8 +30,8 @@ const ArtisanDetail = () => {
           image: "/assets/images/artisans/artisan-1.jpg",
           note: 4.8,
           nombreAvis: 124,
-          specialite: "Plombier",
-          categorie: "Bâtiment",
+          specialite: { nom: "Plomberie" },
+          categorie: { nom: "Bâtiment" },
           ville: "Lyon",
           codePostal: "69001",
           description: "Plombier expérimenté avec plus de 15 ans d'expérience dans le domaine. Spécialisé dans les installations sanitaires, le dépannage et la rénovation. Intervention rapide et travail soigné garanti.",
@@ -130,10 +130,10 @@ const ArtisanDetail = () => {
               
               <div className="artisan-detail__meta">
                 <p className="artisan-detail__specialty">
-                  <strong>Spécialité:</strong> {artisan.specialite}
+                  <strong>Spécialité:</strong> {artisan.specialite?.nom || artisan.specialite}
                 </p>
                 <p className="artisan-detail__category">
-                  <strong>Catégorie:</strong> {artisan.categorie}
+                  <strong>Catégorie:</strong> {artisan.categorie?.nom || artisan.categorie}
                 </p>
                 <p className="artisan-detail__location">
                   <FaMapMarkerAlt /> {artisan.ville}, {artisan.codePostal}

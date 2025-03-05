@@ -44,7 +44,7 @@ const Footer = () => {
                 <Link to="/artisans">Artisans</Link>
               </li>
               <li>
-                <Link to="/a-propos">À propos</Link>
+                <Link to="/about">À propos</Link>
               </li>
               <li>
                 <Link to="/contact">Contact</Link>
@@ -53,28 +53,30 @@ const Footer = () => {
           </div>
 
           <div className="footer__section">
-            <h4>Catégories populaires</h4>
+            <h4>Pages légales</h4>
             <ul>
               <li>
-                <Link to="/categories/batiment">Bâtiment</Link>
+                <Link to="/mentions-legales">Mentions légales</Link>
               </li>
               <li>
-                <Link to="/categories/services">Services</Link>
+                <Link to="/donnees-personnelles">Données personnelles</Link>
               </li>
               <li>
-                <Link to="/categories/fabrication">Fabrication</Link>
+                <Link to="/accessibilite">Accessibilité</Link>
               </li>
               <li>
-                <Link to="/categories/alimentation">Alimentation</Link>
+                <Link to="/cookies">Cookies</Link>
               </li>
             </ul>
           </div>
 
           <div className="footer__section">
             <h4>Contact</h4>
-            <p>123 Avenue des Artisans</p>
-            <p>69000 Lyon, France</p>
-            <p>Téléphone: +33 4 78 XX XX XX</p>
+            <p>101 cours Charlemagne</p>
+            <p>CS 20033</p>
+            <p>69269 LYON CEDEX 02</p>
+            <p>France</p>
+            <p>+33 (0)4 26 73 40 00</p>
             <p>Email: contact@trouve-ton-artisan.fr</p>
           </div>
         </div>
