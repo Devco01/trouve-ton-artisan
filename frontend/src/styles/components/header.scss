@@ -1,7 +1,7 @@
 @import '../variables';
 
 .header {
-  background-color: #f1f8fc;
+  background-color: $color-light-blue;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -11,13 +11,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 $spacing-md;
+    padding: 0 15px;
     max-width: 1200px;
     margin: 0 auto;
     height: 90px;
     
-    @media (max-width: 768px) {
-      padding: 0 $spacing-sm;
+    @media (max-width: $breakpoint-md) {
+      padding: 0 10px;
     }
   }
   
@@ -31,7 +31,7 @@
       object-fit: contain;
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
       height: 70px;
       
       img {
@@ -44,13 +44,13 @@
     display: flex;
     align-items: center;
     
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
       position: absolute;
       top: 90px;
       left: 0;
       right: 0;
-      background-color: #f1f8fc;
-      padding: $spacing-md;
+      background-color: $color-light-blue;
+      padding: 15px;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
       flex-direction: column;
       align-items: center;
@@ -68,41 +68,43 @@
     margin: 0;
     padding: 0;
     
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
       flex-direction: column;
       width: 100%;
     }
   }
   
   &__menu-item {
-    margin: 0 $spacing-sm;
+    margin: 0 10px;
     
-    @media (max-width: 768px) {
-      margin: $spacing-xs 0;
+    @media (max-width: $breakpoint-md) {
+      margin: 5px 0;
       text-align: center;
     }
   }
   
   &__link {
     text-decoration: none;
-    color: #00497c;
+    color: $color-dark-blue;
     font-weight: bold;
-    padding: $spacing-xs $spacing-sm;
+    padding: 8px 12px;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     
     &:hover {
       background-color: rgba(0, 116, 199, 0.1);
     }
     
     &.active {
-      background-color: #0074c7;
-      color: white;
+      background-color: $color-blue;
+      color: white !important;
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
       display: block;
-      padding: $spacing-sm;
+      padding: 10px;
     }
   }
   
@@ -110,14 +112,55 @@
     display: none;
     font-size: 24px;
     cursor: pointer;
-    color: #00497c;
+    color: $color-dark-blue;
     
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
       display: block;
     }
   }
   
-  @media (max-width: 992px) {
+  &__search {
+    display: flex;
+    align-items: center;
+    background-color: $color-light-blue;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 73, 124, 0.2);
+    overflow: hidden;
+    width: 250px;
+    
+    input {
+      border: none;
+      background: transparent;
+      padding: 8px 12px;
+      width: 100%;
+      outline: none;
+      font-family: $font-family-base;
+      font-size: 14px;
+      color: $color-dark-blue;
+      
+      &::placeholder {
+        color: rgba(0, 73, 124, 0.6);
+      }
+    }
+    
+    button {
+      background: $color-blue;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+      
+      &:hover {
+        background-color: $color-dark-blue;
+      }
+    }
+  }
+  
+  @media (max-width: $breakpoint-lg) {
     height: auto;
     padding: 1rem 0;
     
@@ -142,7 +185,7 @@
     }
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: $breakpoint-md) {
     &__container {
       flex-direction: column;
     }
@@ -184,37 +227,37 @@
 
 // Styles pour les boutons de recherche
 .search-button {
-  background-color: #0074c7;
+  background-color: $color-blue;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: $spacing-xs $spacing-sm;
+  padding: 8px 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   
   &:hover {
-    background-color: #00497c;
+    background-color: $color-dark-blue;
   }
 }
 
 // Styles pour les boutons d'action
 .action-button {
-  background-color: #82b864;
+  background-color: $color-green;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: $spacing-xs $spacing-sm;
+  padding: 8px 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   
   &:hover {
-    background-color: darken(#82b864, 10%);
+    background-color: darken($color-green, 10%);
   }
 }
 
 // Styles pour les alertes ou notifications
 .notification {
-  background-color: #cd2c2e;
+  background-color: $color-red;
   color: white;
   border-radius: 50%;
   width: 20px;

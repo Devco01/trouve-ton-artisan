@@ -10,7 +10,6 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import ArtisanDetail from './pages/ArtisanDetail';
 import ArtisansList from './pages/ArtisansList';
-import CategoriesList from './pages/CategoriesList';
 import SearchResults from './pages/SearchResults';
 import Contact from './pages/Contact';
 import About from './pages/About';
@@ -42,7 +41,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/artisans/:artisanId" element={<ArtisanDetail />} />
             <Route path="/artisans" element={<ArtisansList />} />
-            <Route path="/categories" element={<CategoriesList />} />
             <Route path="/categories/:categorySlug" element={<ArtisansList />} />
             <Route path="/search" element={<SearchResults />} />
             <Route path="/contact" element={<Contact />} />

@@ -169,19 +169,27 @@
   
   &__container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 280px));
     gap: 2rem;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 30px;
+    justify-content: center;
     
     @media (max-width: $breakpoint-lg) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 300px));
+      max-width: 960px;
     }
     
     @media (max-width: $breakpoint-md) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 350px));
+      max-width: 740px;
     }
     
     @media (max-width: $breakpoint-sm) {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 400px);
+      max-width: 400px;
+      padding: 0 20px;
     }
   }
   
@@ -197,29 +205,37 @@
   
   &__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 30px;
     
     @media (max-width: $breakpoint-md) {
       flex-direction: column;
+      align-items: center;
       gap: 2rem;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      padding: 0 20px;
     }
   }
   
   &__step {
-    flex: 1;
+    flex: 0 1 350px;
     text-align: center;
-    padding: 0 1rem;
     background-color: white;
     border-radius: $border-radius;
     box-shadow: $box-shadow;
-    margin: 0 0.5rem;
     padding: 1.5rem;
     position: relative;
     overflow: hidden;
     
     @media (max-width: $breakpoint-md) {
       max-width: 400px;
-      margin: 0 auto 1.5rem;
+      width: 100%;
+      margin: 0;
     }
   }
   
@@ -258,19 +274,27 @@
   
   &__container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 350px));
     gap: 2rem;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 30px;
+    justify-content: center;
     
     @media (max-width: $breakpoint-lg) {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 350px));
+      max-width: 1080px;
     }
     
     @media (max-width: $breakpoint-md) {
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 400px));
+      max-width: 840px;
     }
     
     @media (max-width: $breakpoint-sm) {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 400px);
+      max-width: 400px;
+      padding: 0 20px;
     }
   }
 }

@@ -19,17 +19,29 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-top: 2rem;
-
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 30px;
+    justify-content: center;
+    
     @media (min-width: $breakpoint-sm) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 400px));
+      justify-content: center;
     }
 
     @media (min-width: $breakpoint-lg) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 350px));
+      max-width: 1080px;
     }
 
     @media (min-width: $breakpoint-xl) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 350px));
+      max-width: 1140px;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      padding: 0 20px;
     }
   }
 
