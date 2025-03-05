@@ -1,0 +1,534 @@
+@import '../variables.scss';
+
+.artisan-detail-page {
+  padding: 2rem 0 4rem;
+}
+
+.artisan-detail {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+  
+  &__image-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 1.5rem;
+    
+    @media (min-width: $breakpoint-md) {
+      margin: 0 2rem 0 0;
+      width: 30%;
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+  }
+  
+  &__info {
+    flex: 1;
+  }
+  
+  &__name {
+    margin-bottom: 0.5rem;
+    color: $color-dark-blue;
+    font-size: 1.75rem;
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: 2rem;
+    }
+  }
+  
+  &__rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  &__stars {
+    display: flex;
+    margin-right: 0.5rem;
+  }
+  
+  .star {
+    color: #ccc;
+    margin-right: 0.25rem;
+    
+    &--filled {
+      color: #ffc107;
+    }
+    
+    &--half {
+      color: #ffc107;
+    }
+  }
+  
+  &__rating-text {
+    font-size: 0.875rem;
+    color: $color-dark-gray;
+  }
+  
+  &__meta {
+    margin-bottom: 1.5rem;
+    
+    p {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      
+      svg {
+        margin-right: 0.5rem;
+        color: $color-blue;
+      }
+    }
+    
+    a {
+      color: $color-blue;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  &__about {
+    h2 {
+      color: $color-dark-blue;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    p {
+      line-height: 1.6;
+    }
+  }
+  
+  &__reviews {
+    h2 {
+      color: $color-dark-blue;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+  
+  &__contact {
+    grid-column: 1 / -1;
+    
+    h2 {
+      color: $color-dark-blue;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-danger {
+  color: $color-red;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.artisan-page {
+  &__main {
+    flex: 2;
+    min-width: 300px;
+  }
+
+  &__sidebar {
+    flex: 1;
+    min-width: 300px;
+  }
+}
+
+.artisan-gallery {
+  margin-top: 2rem;
+
+  &__title {
+    margin-bottom: 1.5rem;
+    color: $color-dark-blue;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  &__item {
+    height: 150px;
+    border-radius: $border-radius;
+    overflow: hidden;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.artisan-reviews {
+  margin-top: 2rem;
+
+  &__title {
+    margin-bottom: 1.5rem;
+    color: $color-dark-blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .btn-add-review {
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__item {
+    background-color: #fff;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    padding: 1.5rem;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__author {
+    flex: 1;
+
+    h4 {
+      margin: 0 0 0.25rem;
+      color: $color-dark-blue;
+    }
+
+    .date {
+      font-size: 0.75rem;
+      color: $color-dark-gray;
+    }
+  }
+
+  &__rating {
+    color: #ffc107;
+  }
+
+  &__content {
+    color: $color-dark-gray;
+    line-height: 1.6;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 2rem;
+    background-color: $color-light-blue;
+    border-radius: $border-radius;
+    color: $color-dark-gray;
+  }
+}
+
+.artisan-services {
+  margin-top: 2rem;
+
+  &__title {
+    margin-bottom: 1.5rem;
+    color: $color-dark-blue;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__item {
+    background-color: #fff;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: $color-dark-blue;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    color: $color-dark-gray;
+    font-size: 0.875rem;
+  }
+
+  &__price {
+    font-weight: 600;
+    color: $color-blue;
+    margin-left: 1.5rem;
+  }
+}
+
+.artisan-map {
+  margin-top: 2rem;
+  background-color: #fff;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+
+  &__title {
+    padding: 1.5rem;
+    margin: 0;
+    color: $color-dark-blue;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__container {
+    height: 300px;
+    background-color: $color-light-blue;
+  }
+}
+
+.artisan-contact {
+  background-color: #fff;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 1.5rem;
+
+  &__title {
+    margin-bottom: 1.5rem;
+    color: $color-dark-blue;
+  }
+
+  &__info {
+    margin-bottom: 1.5rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    i {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-light-blue;
+      color: $color-blue;
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+
+    p {
+      margin: 0;
+      color: $color-dark-gray;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-light-blue;
+      color: $color-blue;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $color-blue;
+        color: #fff;
+      }
+    }
+  }
+
+  &__hours {
+    margin-bottom: 1.5rem;
+
+    h4 {
+      margin-bottom: 1rem;
+      color: $color-dark-blue;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+
+      .day {
+        color: $color-dark-gray;
+      }
+
+      .time {
+        color: $color-dark-blue;
+        font-weight: 500;
+      }
+
+      &.closed .time {
+        color: $color-red;
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
+    background-color: $color-blue;
+    color: #fff;
+    border: none;
+    border-radius: $border-radius;
+    padding: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $color-dark-blue;
+    }
+  }
+}
+
+.review-form {
+  background-color: #fff;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+
+  &__title {
+    margin-bottom: 1.5rem;
+    color: $color-dark-blue;
+  }
+
+  &__rating {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    &-stars {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      color: #ddd;
+
+      i {
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &.active, &:hover {
+          color: #ffc107;
+        }
+      }
+    }
+  }
+
+  &__group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: $border-radius;
+      min-height: 150px;
+      resize: vertical;
+
+      &:focus {
+        border-color: $color-blue;
+        outline: none;
+      }
+    }
+  }
+
+  &__button {
+    background-color: $color-blue;
+    color: #fff;
+    border: none;
+    border-radius: $border-radius;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $color-dark-blue;
+    }
+  }
+} 

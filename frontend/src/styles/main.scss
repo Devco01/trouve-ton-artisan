@@ -1,0 +1,253 @@
+@import 'variables.scss';
+@import 'global.scss';
+
+// Import des styles de composants
+@import 'components.scss';
+
+// Import des styles de pages
+@import 'pages/home.scss';
+@import 'pages/artisans-list.scss';
+@import 'pages/artisan-detail.scss';
+@import 'pages/categories-list.scss';
+@import 'pages/search.scss';
+@import 'pages/contact.scss';
+@import 'pages/about.scss';
+@import 'pages/not-found.scss';
+
+// Pages spécifiques
+@import 'pages/artisan-detail';
+@import 'pages/search';
+@import 'pages/contact';
+@import 'pages/about';
+
+// Styles supplémentaires pour l'application
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-base;
+  color: $color-dark-gray;
+  background-color: #f8f9fa;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+// Styles pour les boutons
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: $border-radius;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  
+  &:focus, &:hover {
+    text-decoration: none;
+    outline: 0;
+  }
+  
+  &-primary {
+    background-color: $color-blue;
+    border-color: $color-blue;
+    color: white;
+    
+    &:hover, &:focus {
+      background-color: $color-dark-blue;
+      border-color: $color-dark-blue;
+      color: white;
+    }
+  }
+  
+  &-secondary {
+    background-color: transparent;
+    border-color: $color-blue;
+    color: $color-blue;
+    
+    &:hover, &:focus {
+      background-color: $color-blue;
+      color: white;
+    }
+  }
+  
+  &-success {
+    background-color: $color-green;
+    border-color: $color-green;
+    color: white;
+    
+    &:hover, &:focus {
+      background-color: darken($color-green, 10%);
+      border-color: darken($color-green, 10%);
+      color: white;
+    }
+  }
+  
+  &-danger {
+    background-color: $color-red;
+    border-color: $color-red;
+    color: white;
+    
+    &:hover, &:focus {
+      background-color: darken($color-red, 10%);
+      border-color: darken($color-red, 10%);
+      color: white;
+    }
+  }
+  
+  &-outline {
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    
+    &:hover, &:focus {
+      background-color: white;
+      color: $color-blue;
+    }
+  }
+  
+  &-contact {
+    background-color: $color-blue;
+    border-color: $color-blue;
+    color: white;
+    
+    &:hover, &:focus {
+      background-color: $color-dark-blue;
+      border-color: $color-dark-blue;
+      color: white;
+    }
+  }
+  
+  &-call {
+    background-color: $color-blue;
+    border-color: $color-blue;
+    color: white;
+    
+    &:hover, &:focus {
+      background-color: $color-dark-blue;
+      border-color: $color-dark-blue;
+      color: white;
+    }
+  }
+  
+  &-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+  }
+  
+  &-lg {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+  }
+}
+
+// Styles pour les formulaires
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: $color-dark-gray;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: $border-radius;
+  transition: border-color 0.15s ease-in-out;
+  
+  &:focus {
+    color: $color-dark-gray;
+    background-color: #fff;
+    border-color: $color-blue;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba($color-blue, 0.25);
+  }
+  
+  &::placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  &:disabled, &[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+  }
+  
+  &.is-invalid {
+    border-color: $color-red;
+    
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba($color-red, 0.25);
+    }
+  }
+}
+
+// Utilitaires
+.text-center {
+  text-align: center;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+  
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+  
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+  
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
+}
+
+// Animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+} 

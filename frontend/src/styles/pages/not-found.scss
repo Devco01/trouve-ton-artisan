@@ -1,0 +1,83 @@
+@import '../variables.scss';
+
+.not-found-page {
+  padding: 4rem 0;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.not-found-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.not-found-image {
+  max-width: 300px;
+  margin: 0 auto 2rem;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.not-found-title {
+  font-size: 6rem;
+  font-weight: 700;
+  color: $color-blue;
+  margin: 0;
+  line-height: 1;
+}
+
+.not-found-subtitle {
+  font-size: 2rem;
+  color: $color-dark-blue;
+  margin-bottom: 1.5rem;
+}
+
+.not-found-text {
+  color: $color-dark-gray;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+
+  .btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.not-found-help {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+  &-title {
+    font-size: 1.25rem;
+    color: $color-dark-blue;
+    margin-bottom: 0.5rem;
+  }
+
+  &-text {
+    color: $color-dark-gray;
+
+    a {
+      color: $color-blue;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+} 

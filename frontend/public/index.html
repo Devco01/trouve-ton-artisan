@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.png" type="image/png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32.png" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0088cc" />
+    <meta
+      name="description"
+      content="Trouve ton artisan - Plateforme de mise en relation avec des artisans qualifiés en Auvergne-Rhône-Alpes"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon-32.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Trouve ton artisan | Auvergne-Rhône-Alpes</title>
+    <style>
+      /* Styles pour corriger les problèmes d'affichage */
+      .home-hero__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .home-hero__text {
+        max-width: 800px !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+      }
+      
+      .home-hero__title, .home-hero__subtitle {
+        text-align: center !important;
+      }
+      
+      .home-hero__search-container {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+      }
+      
+      .home-hero__search {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 800px !important;
+        width: 100% !important;
+      }
+      
+      .home-hero__form {
+        justify-content: center !important;
+      }
+      
+      .home-steps__step-number {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.25rem !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+      
+      .home-steps__step {
+        background-color: white !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        margin: 0 0.5rem !important;
+        padding: 1.5rem !important;
+        position: relative !important;
+        overflow: hidden !important;
+      }
+      
+      .artisan-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+      }
+      
+      .artisan-card__image {
+        position: relative !important;
+        overflow: hidden !important;
+      }
+      
+      .artisan-card__content {
+        overflow: hidden !important;
+      }
+      
+      .artisan-card__title {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+      
+      .featured-artisans__container {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+      }
+      
+      .newsletter__content {
+        max-width: 1000px !important;
+        margin: 0 auto !important;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-radius: 8px !important;
+        padding: 2rem !important;
+        display: flex !important;
+        align-items: center !important;
+      }
+      
+      .newsletter__title {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+      }
+      
+      .newsletter__form-container {
+        flex: 1 !important;
+        max-width: 500px !important;
+      }
+      
+      .newsletter__form-label {
+        color: white !important;
+        margin-bottom: 0.5rem !important;
+        font-weight: 500 !important;
+      }
+      
+      .newsletter__form .form-group {
+        display: flex !important;
+        margin-bottom: 0.5rem !important;
+      }
+      
+      .newsletter__form .form-control {
+        flex: 1 !important;
+        height: 48px !important;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+      
+      .newsletter__form .btn {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        height: 48px !important;
+        padding: 0 1.5rem !important;
+      }
+      
+      .newsletter__privacy {
+        margin-top: 1rem !important;
+        font-size: 0.85rem !important;
+        opacity: 0.8 !important;
+      }
+      
+      @media (max-width: 768px) {
+        .newsletter__content {
+          padding: 1.5rem !important;
+          flex-direction: column !important;
+        }
+        
+        .newsletter__text {
+          margin-bottom: 1.5rem !important;
+          padding-right: 0 !important;
+        }
+        
+        .newsletter__title, .newsletter__description {
+          text-align: center !important;
+        }
+        
+        .newsletter__form-container {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+        
+        .newsletter__form-label {
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>Vous devez activer JavaScript pour utiliser cette application.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

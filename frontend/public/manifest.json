@@ -1,0 +1,20 @@
+{
+  "short_name": "Trouve ton artisan",
+  "name": "Trouve ton artisan | Auvergne-Rhône-Alpes",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0088cc",
+  "background_color": "#ffffff"
+}
