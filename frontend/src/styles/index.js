@@ -4,9 +4,11 @@ import './variables.scss';
 import './main.scss';
 import './components.scss';
 import './components/header.scss';
+import './components/footer.scss';
 import './components/artisanCard.scss';
-import './components/categoryCard.scss';
-import './components/home-faq.scss';
+import './components/featuredArtisans.scss';
+import './components/homeSteps.scss';
+import './components/contactForm.scss';
 
 // Autres imports de style peuvent être ajoutés ici
 
@@ -18,8 +20,7 @@ export const styles = {
   pages: {
     home: require('./pages/home.scss'),
     artisanDetail: require('./pages/artisan-detail.scss'),
-    search: require('./pages/search.scss'),
-    contact: require('./pages/contact.scss'),
-    about: require('./pages/about.scss')
+    notFound: require('./pages/not-found.scss'),
+    artisansList: require('./pages/artisans-list.scss')
   }
 }; 

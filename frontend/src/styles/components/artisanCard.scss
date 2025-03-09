@@ -1,30 +1,149 @@
 @import '../variables.scss';
 
 .artisan-card {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 0 auto;
+  background-color: white;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
   
   &__header {
-    background-color: $color-light-blue;
-    padding: 1rem;
     position: relative;
+    height: 200px;
+    background-color: $color-light-blue;
+    overflow: hidden;
+  }
+  
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
+  &__placeholder {
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 60px;
+    justify-content: center;
+    background-color: $color-light-blue;
+  }
+  
+  &__initials {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-blue;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+  
+  &__user-icon-container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+  }
+  
+  &__user-icon {
+    font-size: 64px;
+    color: $color-blue;
+  }
+  
+  &__content {
+    padding: 1.25rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: $color-dark-blue;
+  }
+  
+  &__rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  &__stars {
+    display: flex;
+    margin-right: 0.5rem;
+    
+    .star-filled, .star-half {
+      color: #ffc107;
+    }
+    
+    .star-empty {
+      color: #ccc;
+    }
+    
+    svg {
+      margin-right: 0.25rem;
+    }
+  }
+  
+  &__reviews {
+    font-size: 0.875rem;
+    color: $color-dark-gray;
+  }
+  
+  &__specialty {
+    font-size: 1rem;
+    color: $color-blue;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+  
+  &__location {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: $color-dark-gray;
+    margin-top: auto;
+    
+    &-icon {
+      color: $color-blue;
+      margin-right: 0.5rem;
+    }
+  }
+  
+  &__description {
+    color: $color-dark-gray;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0;
   }
   
   &__specialty-badge {
@@ -40,68 +159,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  
-  &__content {
-    padding: 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  &__title {
-    font-size: 1.25rem;
-    color: $color-dark-blue;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  &__rating {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.75rem;
-    
-    svg {
-      color: gold;
-      margin-right: 0.1rem;
-      font-size: 1rem;
-    }
-    
-    span {
-      margin-left: 0.5rem;
-      font-size: 0.85rem;
-      color: $color-dark-gray;
-    }
-  }
-  
-  &__location {
-    display: flex;
-    align-items: center;
-    color: $color-dark-gray;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    
-    svg {
-      margin-right: 0.5rem;
-      color: $color-blue;
-      flex-shrink: 0;
-    }
-  }
-  
-  &__description {
-    color: $color-dark-gray;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    flex-grow: 1;
   }
   
   &__footer {

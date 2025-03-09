@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
-const ContactForm = ({ recipient, subject }) => {
+const ContactForm = ({ artisanId, artisanName }) => {
   const [formData, setFormData] = useState({
     nom: '',
     email: '',
-    telephone: '',
-    sujet: subject || '',
+    objet: '',
     message: ''
   });
   
@@ -41,8 +39,7 @@ const ContactForm = ({ recipient, subject }) => {
       setFormData({
         nom: '',
         email: '',
-        telephone: '',
-        sujet: subject || '',
+        objet: '',
         message: ''
       });
       
@@ -67,7 +64,7 @@ const ContactForm = ({ recipient, subject }) => {
           <h3>Message envoyé avec succès !</h3>
           <p>Nous vous répondrons dans les plus brefs délais.</p>
           <button 
-            className="btn btn-primary mt-3"
+            className="contact-form__button mt-3"
             onClick={() => setFormStatus(prev => ({ ...prev, isSubmitted: false }))}
           >
             Envoyer un autre message
@@ -79,19 +76,15 @@ const ContactForm = ({ recipient, subject }) => {
 
   return (
     <div className="contact-form">
-      <h3 className="contact-form__title">
-        {recipient ? `Contacter ${recipient}` : 'Nous contacter'}
-      </h3>
-      
       {formStatus.error && (
-        <div className="alert alert-danger mb-4">
+        <div className="contact-form__error mb-4">
           {formStatus.error}
         </div>
       )}
       
       <form onSubmit={handleSubmit}>
         <div className="contact-form__group">
-          <label htmlFor="nom" className="contact-form__label">Nom complet</label>
+          <label htmlFor="nom" className="contact-form__label">Nom</label>
           <input
             type="text"
             id="nom"
@@ -99,6 +92,7 @@ const ContactForm = ({ recipient, subject }) => {
             value={formData.nom}
             onChange={handleChange}
             className="contact-form__input"
+            placeholder="Votre nom"
             required
           />
         </div>
@@ -112,31 +106,21 @@ const ContactForm = ({ recipient, subject }) => {
             value={formData.email}
             onChange={handleChange}
             className="contact-form__input"
+            placeholder="Votre adresse email"
             required
           />
         </div>
         
         <div className="contact-form__group">
-          <label htmlFor="telephone" className="contact-form__label">Téléphone</label>
-          <input
-            type="tel"
-            id="telephone"
-            name="telephone"
-            value={formData.telephone}
-            onChange={handleChange}
-            className="contact-form__input"
-          />
-        </div>
-        
-        <div className="contact-form__group">
-          <label htmlFor="sujet" className="contact-form__label">Sujet</label>
+          <label htmlFor="objet" className="contact-form__label">Objet</label>
           <input
             type="text"
-            id="sujet"
-            name="sujet"
-            value={formData.sujet}
+            id="objet"
+            name="objet"
+            value={formData.objet}
             onChange={handleChange}
             className="contact-form__input"
+            placeholder="L'objet de votre message"
             required
           />
         </div>
@@ -149,7 +133,8 @@ const ContactForm = ({ recipient, subject }) => {
             value={formData.message}
             onChange={handleChange}
             className="contact-form__textarea"
-            rows="5"
+            placeholder="Votre message..."
+            rows="4"
             required
           ></textarea>
         </div>
@@ -159,16 +144,11 @@ const ContactForm = ({ recipient, subject }) => {
           className="contact-form__button"
           disabled={formStatus.isSubmitting}
         >
-          {formStatus.isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
+          {formStatus.isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
         </button>
       </form>
     </div>
   );
-};
-
-ContactForm.propTypes = {
-  recipient: PropTypes.string,
-  subject: PropTypes.string
 };
 
 export default ContactForm; 

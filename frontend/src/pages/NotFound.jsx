@@ -10,7 +10,7 @@ const NotFound = () => {
         <div className="not-found-content">
           <div className="not-found-image">
             <img 
-              src="/assets/images/not-found.svg" 
+              src="/assets/images/Not found.jpg" 
               alt="Page non trouvée" 
               className="not-found-img"
             />
@@ -30,14 +30,6 @@ const NotFound = () => {
             <Link to="/" className="btn btn-primary">
               <FaHome /> Retour à l'accueil
             </Link>
-          </div>
-          
-          <div className="not-found-help">
-            <h3 className="not-found-help-title">Besoin d'aide ?</h3>
-            <p className="not-found-help-text">
-              Si vous pensez qu'il s'agit d'une erreur ou si vous ne trouvez pas ce que vous cherchez,
-              n'hésitez pas à <Link to="/contact">nous contacter</Link>.
-            </p>
           </div>
         </div>
       </div>

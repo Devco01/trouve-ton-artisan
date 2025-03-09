@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaStar, FaStarHalfAlt, FaRegStar, FaGlobe, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaStar, FaStarHalfAlt, FaRegStar, FaMapMarkerAlt, FaPhone, FaEnvelope, FaUser } from 'react-icons/fa';
 import { artisanService } from '../services/api';
 import ContactForm from '../components/ContactForm';
-import ReviewsList from '../components/ReviewsList';
 import '../styles/pages/artisan-detail.scss';
 
 const ArtisanDetail = () => {
@@ -30,29 +29,13 @@ const ArtisanDetail = () => {
           image: "/assets/images/artisans/artisan-1.jpg",
           note: 4.8,
           nombreAvis: 124,
-          specialite: { nom: "Plomberie" },
+          specialite: { nom: "Électricité" },
           categorie: { nom: "Bâtiment" },
           ville: "Lyon",
           codePostal: "69001",
-          description: "Plombier expérimenté avec plus de 15 ans d'expérience dans le domaine. Spécialisé dans les installations sanitaires, le dépannage et la rénovation. Intervention rapide et travail soigné garanti.",
-          telephone: "0478123456",
-          siteWeb: "https://www.plomberie-dupont.fr",
-          avis: [
-            {
-              id: 1,
-              nom: "Sophie Martin",
-              note: 5,
-              commentaire: "Excellent travail, rapide et efficace. Je recommande vivement !",
-              date: "2023-05-15"
-            },
-            {
-              id: 2,
-              nom: "Pierre Durand",
-              note: 4,
-              commentaire: "Bon travail, prix correct. Légèrement en retard sur le rendez-vous.",
-              date: "2023-04-22"
-            }
-          ]
+          description: "Jean Dupont est un plombier expérimenté avec plus de 15 ans d'expérience dans le domaine. Spécialisé dans les installations sanitaires et le dépannage d'urgence. Il intervient rapidement sur Lyon et sa périphérie. Jean Dupont est reconnu pour son professionnalisme, sa ponctualité et la qualité de son travail.",
+          telephone: "04 XX XX XX XX",
+          email: "contact@jeandupont.fr"
         });
       } finally {
         setLoading(false);
@@ -106,74 +89,85 @@ const ArtisanDetail = () => {
 
   return (
     <main className="artisan-detail-page">
-      <div className="container">
-        <div className="artisan-detail">
-          <div className="artisan-detail__header">
-            <div className="artisan-detail__image-container">
-              <img 
-                src={artisan.image || '/assets/images/artisan-default.jpg'} 
-                alt={artisan.nom} 
-                className="artisan-detail__image" 
-              />
+      <div className="artisan-detail-content">
+        <div className="container">
+          <div className="artisan-detail-main">
+            <div className="artisan-detail-main__left">
+              <div className="artisan-detail-main__image-container">
+                {artisan.image ? (
+                  <img 
+                    src={artisan.image} 
+                    alt={artisan.nom} 
+                    className="artisan-detail-main__image" 
+                  />
+                ) : (
+                  <div style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    height: '100%', 
+                    backgroundColor: '#0072bc' 
+                  }}>
+                    <FaUser 
+                      style={{ 
+                        fontSize: '128px', 
+                        color: 'white' 
+                      }} 
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="artisan-detail__info">
-              <h1 className="artisan-detail__name">{artisan.nom}</h1>
+            
+            <div className="artisan-detail-main__center">
+              <h2 className="artisan-detail-main__name">{artisan.nom}</h2>
               
-              <div className="artisan-detail__rating">
-                <div className="artisan-detail__stars">
+              <div className="artisan-detail-main__rating">
+                <div className="artisan-detail-main__stars">
                   {renderStars(artisan.note)}
                 </div>
-                <span className="artisan-detail__rating-text">
-                  {artisan.note.toFixed(1)} ({artisan.nombreAvis} avis)
+                <span className="artisan-detail-main__rating-text">
+                  ({artisan.nombreAvis} avis)
                 </span>
               </div>
               
-              <div className="artisan-detail__meta">
-                <p className="artisan-detail__specialty">
-                  <strong>Spécialité:</strong> {artisan.specialite?.nom || artisan.specialite}
-                </p>
-                <p className="artisan-detail__category">
-                  <strong>Catégorie:</strong> {artisan.categorie?.nom || artisan.categorie}
-                </p>
-                <p className="artisan-detail__location">
-                  <FaMapMarkerAlt /> {artisan.ville}, {artisan.codePostal}
-                </p>
+              <div className="artisan-detail-main__specialty">
+                {artisan.specialite?.nom || artisan.specialite}
+              </div>
+              
+              <div className="artisan-detail-main__location">
+                <FaMapMarkerAlt className="artisan-detail-main__icon" />
+                <span>{artisan.ville}, {artisan.codePostal}</span>
+              </div>
+              
+              <div className="artisan-detail-main__contact-info">
+                <div className="artisan-detail-main__phone">
+                  <FaPhone className="artisan-detail-main__icon" />
+                  <span>Téléphone: {artisan.telephone}</span>
+                </div>
                 
-                {artisan.telephone && (
-                  <p className="artisan-detail__phone">
-                    <FaPhone /> <a href={`tel:${artisan.telephone}`}>{artisan.telephone}</a>
-                  </p>
-                )}
-                
-                {artisan.siteWeb && (
-                  <p className="artisan-detail__website">
-                    <FaGlobe /> <a href={artisan.siteWeb} target="_blank" rel="noopener noreferrer">
-                      Visiter le site web
-                    </a>
-                  </p>
+                {artisan.email && (
+                  <div className="artisan-detail-main__email">
+                    <FaEnvelope className="artisan-detail-main__icon" />
+                    <span>Email: {artisan.email}</span>
+                  </div>
                 )}
               </div>
-            </div>
-          </div>
-          
-          <div className="artisan-detail__content">
-            <div className="artisan-detail__about">
-              <h2>À propos</h2>
-              <p>{artisan.description}</p>
+              
+              <div className="artisan-detail-main__about">
+                <h3 className="artisan-detail-main__about-title">À propos</h3>
+                <p className="artisan-detail-main__about-text">{artisan.description}</p>
+              </div>
             </div>
             
-            <div className="artisan-detail__reviews">
-              <h2>Avis clients</h2>
-              {artisan.avis && artisan.avis.length > 0 ? (
-                <ReviewsList reviews={artisan.avis} />
-              ) : (
-                <p>Aucun avis pour le moment.</p>
-              )}
-            </div>
-            
-            <div className="artisan-detail__contact">
-              <h2>Contacter {artisan.nom}</h2>
-              <ContactForm artisanId={artisan.id} artisanName={artisan.nom} />
+            <div className="artisan-detail-main__right">
+              <div className="artisan-detail-main__contact-form">
+                <h3 className="artisan-detail-main__contact-title">Contacter {artisan.nom}</h3>
+                <p className="artisan-detail-main__contact-subtitle">
+                  Remplissez ce formulaire pour demander un devis ou poser une question. Une réponse vous sera apportée sous 24h.
+                </p>
+                <ContactForm artisanId={artisan.id} artisanName={artisan.nom} />
+              </div>
             </div>
           </div>
         </div>
@@ -182,4 +176,4 @@ const ArtisanDetail = () => {
   );
 };
 
-export default ArtisanDetail; 
+export default ArtisanDetail;

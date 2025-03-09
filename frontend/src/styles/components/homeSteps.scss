@@ -1,0 +1,69 @@
+@import '../variables.scss';
+
+.home-steps {
+  padding: 2rem 0;
+  
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  &__step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: $color-blue;
+    color: white;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  &__step-icon {
+    font-size: 2.5rem;
+    color: $color-blue;
+    margin-bottom: 1.5rem;
+  }
+  
+  &__step-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $color-dark-blue;
+    margin-bottom: 1rem;
+  }
+  
+  &__step-description {
+    color: $color-dark-gray;
+    line-height: 1.5;
+  }
+} 
