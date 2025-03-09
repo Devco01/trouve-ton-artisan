@@ -1,12 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaSearch } from 'react-icons/fa';
 import '../styles/components/header.scss';
+import { categoryService } from '../services/api';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const data = await categoryService.getAll();
+        setCategories(data);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des catégories:', error);
+        // Catégories par défaut en cas d'erreur
+        setCategories([
+          { id: 1, nom: 'Bâtiment', slug: 'batiment' },
+          { id: 2, nom: 'Services', slug: 'services' },
+          { id: 3, nom: 'Fabrication', slug: 'fabrication' },
+          { id: 4, nom: 'Alimentation', slug: 'alimentation' }
+        ]);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   // Fonction pour fermer le menu mobile après clic sur un lien
   const handleLinkClick = () => {
@@ -30,45 +52,38 @@ const Header = () => {
           <img src="/assets/images/logo.png" alt="Trouve ton artisan" />
         </Link>
         
-        {/* Navigation */}
-        <nav className={`header__nav ${menuOpen ? 'open' : ''}`}>
-          <ul className="header__menu">
-            <li className="header__menu-item">
-              <NavLink to="/" className="header__link" onClick={handleLinkClick}>Accueil</NavLink>
-            </li>
-            <li className="header__menu-item">
-              <NavLink to="/categories/batiment" className="header__link" onClick={handleLinkClick}>Bâtiment</NavLink>
-            </li>
-            <li className="header__menu-item">
-              <NavLink to="/categories/services" className="header__link" onClick={handleLinkClick}>Services</NavLink>
-            </li>
-            <li className="header__menu-item">
-              <NavLink to="/categories/fabrication" className="header__link" onClick={handleLinkClick}>Fabrication</NavLink>
-            </li>
-            <li className="header__menu-item">
-              <NavLink to="/categories/alimentation" className="header__link" onClick={handleLinkClick}>Alimentation</NavLink>
-            </li>
-            <li className="header__menu-item">
-              <NavLink to="/about" className="header__link" onClick={handleLinkClick}>À propos</NavLink>
-            </li>
-            <li className="header__menu-item">
-              <NavLink to="/contact" className="header__link" onClick={handleLinkClick}>Contact</NavLink>
-            </li>
-          </ul>
-        </nav>
-        
-        {/* Barre de recherche */}
-        <form onSubmit={handleSearch} className="header__search">
-          <input
-            type="text"
-            placeholder="Rechercher un artisan..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button type="submit" aria-label="Rechercher">
-            <FaSearch />
-          </button>
-        </form>
+        <div className="header__right">
+          {/* Navigation */}
+          <nav className={`header__nav ${menuOpen ? 'open' : ''}`}>
+            <ul className="header__menu">
+              {categories.map(category => (
+                <li key={category.id} className="header__menu-item">
+                  <NavLink 
+                    to={`/categories/${category.slug}`} 
+                    className="header__link" 
+                    onClick={handleLinkClick}
+                  >
+                    {category.nom}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          
+          {/* Barre de recherche */}
+          <form onSubmit={handleSearch} className="header__search">
+            <input
+              type="text"
+              placeholder="Rechercher un artisan..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              aria-label="Rechercher un artisan"
+            />
+            <button type="submit" aria-label="Rechercher">
+              <FaSearch />
+            </button>
+          </form>
+        </div>
         
         {/* Bouton hamburger pour mobile */}
         <div className="header__hamburger" onClick={() => setMenuOpen(!menuOpen)}>

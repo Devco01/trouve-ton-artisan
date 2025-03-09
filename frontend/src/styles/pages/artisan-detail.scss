@@ -1,53 +1,239 @@
 @import '../variables.scss';
 
+// Variables spécifiques à la page
+$color-primary: #0072bc;
+$color-secondary: #f8f9fa;
+$color-text: #333;
+$color-text-light: #666;
+$color-border: #e0e0e0;
+$color-star: #ffc107;
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+
 .artisan-detail-page {
-  padding: 2rem 0 4rem;
+  background-color: white;
+  color: $color-text;
+  font-family: 'Roboto', sans-serif;
 }
 
-.artisan-detail {
-  &__header {
+// En-tête avec le titre
+.artisan-detail-header {
+  background-color: $color-secondary;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid $color-border;
+  
+  &__title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: $color-text-light;
+    margin: 0;
+  }
+}
+
+// Navigation
+.artisan-detail-nav {
+  background-color: white;
+  padding: 1rem 0;
+  border-bottom: 1px solid $color-border;
+  
+  .container {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  &__left {
+    flex: 1;
+  }
+  
+  &__logo {
+    font-weight: bold;
+    color: $color-primary;
+    font-size: 1.1rem;
     
-    @media (min-width: $breakpoint-md) {
-      flex-direction: row;
-      align-items: flex-start;
+    span {
+      border: 2px solid $color-primary;
+      padding: 0.25rem 0.5rem;
+      border-radius: $border-radius-sm;
     }
+  }
+  
+  &__center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+  }
+  
+  &__menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+  }
+  
+  &__item {
+    color: $color-text;
+    font-size: 0.9rem;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 0.25rem;
+    
+    &.active {
+      color: $color-primary;
+      font-weight: 500;
+      
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $color-primary;
+      }
+    }
+    
+    &:hover {
+      color: $color-primary;
+    }
+  }
+  
+  &__right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  &__search {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    
+    input {
+      width: 100%;
+      padding: 0.5rem 2.5rem 0.5rem 1rem;
+      border: 1px solid $color-border;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+      }
+    }
+    
+    .search-button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: $color-primary;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+// Contenu principal
+.artisan-detail-content {
+  padding: 2rem 0;
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+}
+
+.artisan-detail-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  
+  &__left {
+    flex: 0 0 250px;
   }
   
   &__image-container {
     width: 100%;
-    max-width: 300px;
-    margin: 0 auto 1.5rem;
-    
-    @media (min-width: $breakpoint-md) {
-      margin: 0 2rem 0 0;
-      width: 30%;
-    }
+    height: 250px;
+    border-radius: $border-radius-md;
+    overflow: hidden;
+    background-color: #f0f0f0;
   }
   
   &__image {
     width: 100%;
-    height: auto;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
+    height: 100%;
     object-fit: cover;
-    aspect-ratio: 1 / 1;
   }
   
-  &__info {
+  &__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+  }
+  
+  &__initials {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-primary;
+    color: white;
+    font-size: 72px;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+  
+  &__user-icon-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+  }
+  
+  &__user-icon {
+    font-size: 128px;
+    color: $color-primary;
+  }
+  
+  &__favicon-container {
+    display: none;
+  }
+  
+  &__favicon {
+    display: none;
+  }
+  
+  &__center {
     flex: 1;
+    min-width: 300px;
   }
   
   &__name {
-    margin-bottom: 0.5rem;
-    color: $color-dark-blue;
     font-size: 1.75rem;
-    
-    @media (min-width: $breakpoint-md) {
-      font-size: 2rem;
-    }
+    font-weight: 700;
+    color: $color-text;
+    margin: 0 0 0.5rem;
   }
   
   &__rating {
@@ -59,476 +245,307 @@
   &__stars {
     display: flex;
     margin-right: 0.5rem;
-  }
-  
-  .star {
-    color: #ccc;
-    margin-right: 0.25rem;
     
-    &--filled {
-      color: #ffc107;
-    }
-    
-    &--half {
-      color: #ffc107;
+    .star {
+      color: #ccc;
+      font-size: 1.25rem;
+      margin-right: 0.25rem;
+      
+      &--filled, &--half {
+        color: $color-star;
+      }
     }
   }
   
   &__rating-text {
-    font-size: 0.875rem;
-    color: $color-dark-gray;
+    color: $color-text-light;
+    font-size: 0.9rem;
   }
   
-  &__meta {
+  &__specialty {
+    font-size: 1rem;
+    font-weight: 500;
+    color: $color-primary;
+    margin-bottom: 1rem;
+  }
+  
+  &__location, &__phone, &__email {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: $color-text-light;
+    font-size: 0.9rem;
+    
+    .artisan-detail-main__icon {
+      color: $color-primary;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+      min-width: 1rem;
+    }
+  }
+  
+  &__contact-info {
     margin-bottom: 1.5rem;
-    
-    p {
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      
-      svg {
-        margin-right: 0.5rem;
-        color: $color-blue;
-      }
-    }
-    
-    a {
-      color: $color-blue;
-      text-decoration: none;
-      
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-  
-  &__content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    
-    @media (min-width: $breakpoint-lg) {
-      grid-template-columns: 1fr 1fr;
-    }
   }
   
   &__about {
-    h2 {
-      color: $color-dark-blue;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-    
-    p {
-      line-height: 1.6;
-    }
+    margin-top: 2rem;
   }
   
-  &__reviews {
-    h2 {
-      color: $color-dark-blue;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
+  &__about-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $color-primary;
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $color-border;
   }
   
-  &__contact {
-    grid-column: 1 / -1;
-    
-    h2 {
-      color: $color-dark-blue;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-  }
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-danger {
-  color: $color-red;
-}
-
-.mt-4 {
-  margin-top: 1.5rem;
-}
-
-.artisan-page {
-  &__main {
-    flex: 2;
-    min-width: 300px;
-  }
-
-  &__sidebar {
-    flex: 1;
-    min-width: 300px;
-  }
-}
-
-.artisan-gallery {
-  margin-top: 2rem;
-
-  &__title {
-    margin-bottom: 1.5rem;
-    color: $color-dark-blue;
-  }
-
-  &__container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1rem;
-  }
-
-  &__item {
-    height: 150px;
-    border-radius: $border-radius;
-    overflow: hidden;
-    cursor: pointer;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    &:hover img {
-      transform: scale(1.05);
-    }
-  }
-}
-
-.artisan-reviews {
-  margin-top: 2rem;
-
-  &__title {
-    margin-bottom: 1.5rem;
-    color: $color-dark-blue;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .btn-add-review {
-      font-size: 0.875rem;
-      padding: 0.5rem 1rem;
-    }
-  }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  &__item {
-    background-color: #fff;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-    padding: 1.5rem;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  &__avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 1rem;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  &__author {
-    flex: 1;
-
-    h4 {
-      margin: 0 0 0.25rem;
-      color: $color-dark-blue;
-    }
-
-    .date {
-      font-size: 0.75rem;
-      color: $color-dark-gray;
-    }
-  }
-
-  &__rating {
-    color: #ffc107;
-  }
-
-  &__content {
-    color: $color-dark-gray;
+  &__about-text {
+    font-size: 0.95rem;
     line-height: 1.6;
-  }
-
-  &__empty {
-    text-align: center;
-    padding: 2rem;
-    background-color: $color-light-blue;
-    border-radius: $border-radius;
-    color: $color-dark-gray;
-  }
-}
-
-.artisan-services {
-  margin-top: 2rem;
-
-  &__title {
-    margin-bottom: 1.5rem;
-    color: $color-dark-blue;
-  }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  &__item {
-    background-color: #fff;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &__info {
-    flex: 1;
-  }
-
-  &__name {
-    font-weight: 600;
-    color: $color-dark-blue;
-    margin-bottom: 0.5rem;
-  }
-
-  &__description {
-    color: $color-dark-gray;
-    font-size: 0.875rem;
-  }
-
-  &__price {
-    font-weight: 600;
-    color: $color-blue;
-    margin-left: 1.5rem;
-  }
-}
-
-.artisan-map {
-  margin-top: 2rem;
-  background-color: #fff;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  overflow: hidden;
-
-  &__title {
-    padding: 1.5rem;
+    color: $color-text-light;
     margin: 0;
-    color: $color-dark-blue;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
-
-  &__container {
-    height: 300px;
-    background-color: $color-light-blue;
+  
+  &__right {
+    flex: 0 0 350px;
+  }
+  
+  &__contact-form {
+    background-color: white;
+    border-radius: $border-radius-md;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+  }
+  
+  &__contact-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $color-text;
+    margin: 0 0 0.75rem;
+  }
+  
+  &__contact-subtitle {
+    font-size: 0.9rem;
+    color: $color-text-light;
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
   }
 }
 
-.artisan-contact {
-  background-color: #fff;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  padding: 1.5rem;
-
-  &__title {
-    margin-bottom: 1.5rem;
-    color: $color-dark-blue;
-  }
-
-  &__info {
-    margin-bottom: 1.5rem;
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
+// Formulaire de contact
+.contact-form {
+  &__group {
     margin-bottom: 1rem;
-
-    i {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: $color-light-blue;
-      color: $color-blue;
-      border-radius: 50%;
-      margin-right: 1rem;
-    }
-
-    p {
-      margin: 0;
-      color: $color-dark-gray;
-    }
   }
-
-  &__social {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-
-    a {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: $color-light-blue;
-      color: $color-blue;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background-color: $color-blue;
-        color: #fff;
-      }
-    }
+  
+  &__label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: $color-text;
+    margin-bottom: 0.25rem;
   }
-
-  &__hours {
-    margin-bottom: 1.5rem;
-
-    h4 {
-      margin-bottom: 1rem;
-      color: $color-dark-blue;
-    }
-
-    &-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.875rem;
-
-      .day {
-        color: $color-dark-gray;
-      }
-
-      .time {
-        color: $color-dark-blue;
-        font-weight: 500;
-      }
-
-      &.closed .time {
-        color: $color-red;
-      }
-    }
-  }
-
-  &__button {
+  
+  &__input, &__textarea {
     width: 100%;
-    background-color: $color-blue;
-    color: #fff;
-    border: none;
-    border-radius: $border-radius;
     padding: 0.75rem;
+    border: 1px solid $color-border;
+    border-radius: $border-radius-sm;
+    font-size: 0.9rem;
+    
+    &:focus {
+      outline: none;
+      border-color: $color-primary;
+    }
+  }
+  
+  &__textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  &__button {
+    background-color: $color-primary;
+    color: white;
+    border: none;
+    border-radius: $border-radius-sm;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-
+    transition: background-color 0.2s;
+    width: 100%;
+    
     &:hover {
-      background-color: $color-dark-blue;
+      background-color: darken($color-primary, 10%);
     }
+    
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+  
+  &__error {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  
+  &__success {
+    color: #28a745;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
   }
 }
 
-.review-form {
-  background-color: #fff;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-
-  &__title {
-    margin-bottom: 1.5rem;
-    color: $color-dark-blue;
+// Pied de page
+.artisan-detail-footer {
+  background-color: $color-secondary;
+  padding: 2rem 0 1rem;
+  border-top: 1px solid $color-border;
+  
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
-
-  &__rating {
-    margin-bottom: 1.5rem;
-
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
+  
+  &__left {
+    flex: 1;
+    min-width: 200px;
+    
+    h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      color: $color-text;
     }
-
-    &-stars {
-      display: flex;
-      gap: 0.5rem;
-      font-size: 1.5rem;
-      color: #ddd;
-
-      i {
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+        color: $color-text-light;
         cursor: pointer;
-        transition: color 0.3s ease;
-
-        &.active, &:hover {
-          color: #ffc107;
+        
+        &:hover {
+          color: $color-primary;
         }
       }
     }
   }
-
-  &__group {
-    margin-bottom: 1.5rem;
-
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: $border-radius;
-      min-height: 150px;
-      resize: vertical;
-
-      &:focus {
-        border-color: $color-blue;
-        outline: none;
-      }
+  
+  &__center {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  &__logo {
+    font-weight: bold;
+    color: $color-primary;
+    font-size: 1.1rem;
+    
+    span {
+      border: 2px solid $color-primary;
+      padding: 0.25rem 0.5rem;
+      border-radius: $border-radius-sm;
     }
   }
+  
+  &__right {
+    flex: 1;
+    min-width: 200px;
+    text-align: right;
+    
+    p {
+      margin: 0 0 0.5rem;
+      font-size: 0.85rem;
+      color: $color-text-light;
+    }
+  }
+  
+  &__copyright {
+    text-align: center;
+    font-size: 0.8rem;
+    color: $color-text-light;
+    padding-top: 1rem;
+    border-top: 1px solid $color-border;
+  }
+}
 
-  &__button {
-    background-color: $color-blue;
-    color: #fff;
-    border: none;
-    border-radius: $border-radius;
-    padding: 0.75rem 1.5rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+// Styles responsifs
+@media (max-width: 992px) {
+  .artisan-detail-main {
+    &__right {
+      flex: 1 0 100%;
+      order: 3;
+    }
+    
+    &__left {
+      flex: 0 0 200px;
+      order: 1;
+    }
+    
+    &__center {
+      flex: 1;
+      order: 2;
+    }
+  }
+  
+  .artisan-detail-nav {
+    &__center {
+      display: none;
+    }
+    
+    &__left, &__right {
+      flex: 1;
+    }
+  }
+}
 
-    &:hover {
-      background-color: $color-dark-blue;
+@media (max-width: 768px) {
+  .artisan-detail-main {
+    flex-direction: column;
+    
+    &__left {
+      flex: 1 0 auto;
+      order: 1;
+    }
+    
+    &__center {
+      flex: 1 0 auto;
+      order: 2;
+    }
+    
+    &__right {
+      flex: 1 0 auto;
+      order: 3;
+    }
+    
+    &__image-container {
+      height: 200px;
+    }
+  }
+  
+  .artisan-detail-footer {
+    &__content {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    &__left, &__center, &__right {
+      text-align: center;
     }
   }
 } 

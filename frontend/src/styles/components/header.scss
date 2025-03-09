@@ -1,7 +1,7 @@
 @import '../variables';
 
 .header {
-  background-color: $color-light-blue;
+  background-color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -11,31 +11,41 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px;
-    max-width: 1200px;
+    padding: 0 30px;
+    max-width: 1140px;
     margin: 0 auto;
-    height: 90px;
+    height: 80px;
     
     @media (max-width: $breakpoint-md) {
-      padding: 0 10px;
+      padding: 0 20px;
+    }
+  }
+  
+  &__right {
+    display: flex;
+    align-items: center;
+    
+    @media (max-width: $breakpoint-md) {
+      justify-content: flex-end;
+      flex: 1;
     }
   }
   
   &__logo {
-    height: 90px;
+    height: 60px;
     display: flex;
     align-items: center;
     
     img {
-      height: 90px;
+      height: 100%;
       object-fit: contain;
     }
     
     @media (max-width: $breakpoint-md) {
-      height: 70px;
+      height: 50px;
       
       img {
-        height: 70px;
+        height: 50px;
       }
     }
   }
@@ -43,18 +53,20 @@
   &__nav {
     display: flex;
     align-items: center;
+    margin-right: 20px;
     
     @media (max-width: $breakpoint-md) {
       position: absolute;
-      top: 90px;
+      top: 80px;
       left: 0;
       right: 0;
-      background-color: $color-light-blue;
+      background-color: white;
       padding: 15px;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
       flex-direction: column;
       align-items: center;
       display: none;
+      margin-right: 0;
       
       &.open {
         display: flex;
@@ -86,20 +98,39 @@
   &__link {
     text-decoration: none;
     color: $color-dark-blue;
-    font-weight: bold;
+    font-weight: 500;
     padding: 8px 12px;
     border-radius: 4px;
     transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
     
     &:hover {
-      background-color: rgba(0, 116, 199, 0.1);
+      color: $color-blue;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $color-blue;
+      transition: all 0.3s ease;
+    }
+    
+    &:hover::after {
+      width: 100%;
     }
     
     &.active {
-      background-color: $color-blue;
-      color: white !important;
-      font-weight: 700;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      color: $color-blue;
+      font-weight: 600;
+      
+      &::after {
+        width: 100%;
+      }
     }
     
     @media (max-width: $breakpoint-md) {
@@ -122,11 +153,11 @@
   &__search {
     display: flex;
     align-items: center;
-    background-color: $color-light-blue;
+    background-color: #f5f5f5;
     border-radius: 4px;
-    border: 1px solid rgba(0, 73, 124, 0.2);
     overflow: hidden;
     width: 250px;
+    border: 1px solid #e0e0e0;
     
     input {
       border: none;
@@ -158,69 +189,13 @@
         background-color: $color-dark-blue;
       }
     }
-  }
-  
-  @media (max-width: $breakpoint-lg) {
-    height: auto;
-    padding: 1rem 0;
     
-    &__container {
-      flex-wrap: wrap;
-      justify-content: center;
+    @media (max-width: $breakpoint-md) {
+      width: 200px;
     }
     
-    &__logo {
-      margin-bottom: 1rem;
-      height: 80px;
-      
-      img {
-        height: 80px;
-      }
-    }
-    
-    &__menu {
-      li {
-        margin: 0 1rem;
-      }
-    }
-  }
-  
-  @media (max-width: $breakpoint-md) {
-    &__container {
-      flex-direction: column;
-    }
-  
-    &__logo {
-      margin-bottom: 1.5rem;
-      height: 60px;
-      
-      img {
-        height: 60px;
-      }
-    }
-  
-    &__nav {
-      width: 100%;
-    }
-  
-    &__menu {
-      flex-wrap: wrap;
-      
-      li {
-        margin: 0.5rem 1rem;
-      }
-    }
-  
-    &__search {
-      width: 100%;
-      
-      form {
-        width: 100%;
-        
-        input {
-          width: 100%;
-        }
-      }
+    @media (max-width: $breakpoint-sm) {
+      width: 150px;
     }
   }
 }

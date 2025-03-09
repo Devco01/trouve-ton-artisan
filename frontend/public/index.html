@@ -6,12 +6,12 @@
     <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32.png" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0088cc" />
+    <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Trouve ton artisan - Plateforme de mise en relation avec des artisans qualifiés en Auvergne-Rhône-Alpes"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon-32.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -103,7 +103,45 @@
       }
       
       .featured-artisans__container {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(280px, 1fr)) !important;
+        gap: 2rem !important;
+        max-width: 1140px !important;
+        margin: 0 auto !important;
+        padding: 0 30px !important;
+        justify-content: center !important;
+      }
+      
+      @media (max-width: 992px) {
+        .featured-artisans__container {
+          grid-template-columns: repeat(2, minmax(280px, 1fr)) !important;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .featured-artisans__container {
+          grid-template-columns: repeat(1, minmax(280px, 1fr)) !important;
+        }
+      }
+      
+      .footer__container {
+        max-width: 1140px !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        gap: 80px !important;
+        padding: 0 30px !important;
+        width: 100% !important;
+      }
+      
+      @media (max-width: 992px) {
+        .footer__container {
+          flex-direction: column !important;
+          text-align: center !important;
+          align-items: center !important;
+          max-width: 720px !important;
+          gap: 40px !important;
+        }
       }
       
       .newsletter__content {
@@ -180,6 +218,35 @@
         .newsletter__form-label {
           text-align: center !important;
         }
+      }
+      
+      /* Styles pour forcer l'affichage des favicons */
+      .artisan-card__placeholder, .artisan-detail-main__placeholder {
+        background-color: #f0f0f0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      
+      .artisan-card__placeholder::after, .artisan-detail-main__placeholder::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABZklEQVR4nO2XsUrDUBSGv1I6+AQ6uDj4Cg4OOjgUfAMfQBCcHRx9A8HFUTefo4ODiw/gIji5OLg4dLFQWrTHnEBIbm6T3EjFwf5wILnn/Oc/J/cmUELpQxvYBc6BAdADboEn4AV4A96BT2AEjIFv4Ad4BW6AC+AY2AHWgFLWwjXgAOgCQ5SsKTABfhOeT+AeOAOaQCVt8SZwCjwmFE6AAbAPVHOOXQXqwBZwBNwkxD0A+8BiluJLwGXMxBg4BFYyFk1jEWgBVzHxXWA5TXEbuI+ZuAbWcxZOYgO4i8XppC1eAR5jhRtFiQM2gftYvHbS4p2YuBGwWbA4QBO4icXtxAtvxQoPgbUZiAM0gOdY/K1p4UPgJzDsAeUZigPUgYdAw1egFhgOCxIHWAZuAy2HgWEvMOwVKA6wAFwFmvb+DXuB4aRgcf/Nt4GWU8OwGBj2ZyAOUAYagaZ/KaX8W/4AoNhK6LK8dCgAAAAASUVORK5CYII=');
+        background-size: 60px 60px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: white;
+        border-radius: 50%;
+      }
+      
+      .artisan-detail-main__placeholder::after {
+        width: 150px;
+        height: 150px;
+        background-size: 90px 90px;
       }
     </style>
   </head>
