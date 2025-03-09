@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaStar, FaStarHalfAlt, FaRegStar, FaMapMarkerAlt, FaPhone, FaEnvelope, FaUser } from 'react-icons/fa';
+import { FaStar, FaStarHalfAlt, FaRegStar, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import { artisanService } from '../services/api';
 import ContactForm from '../components/ContactForm';
 import '../styles/pages/artisan-detail.scss';
@@ -10,6 +10,12 @@ const ArtisanDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { artisanId } = useParams();
+
+  // Fonction pour obtenir les initiales
+  const getInitials = (name) => {
+    if (!name) return 'A';
+    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+  };
 
   useEffect(() => {
     const fetchArtisan = async () => {
@@ -101,19 +107,19 @@ const ArtisanDetail = () => {
                     className="artisan-detail-main__image" 
                   />
                 ) : (
-                  <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    height: '100%', 
-                    backgroundColor: '#0072bc' 
-                  }}>
-                    <FaUser 
-                      style={{ 
-                        fontSize: '128px', 
-                        color: 'white' 
-                      }} 
-                    />
+                  <div 
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      height: '100%', 
+                      backgroundColor: '#0072bc',
+                      color: 'white',
+                      fontSize: '72px',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {getInitials(artisan.nom)}
                   </div>
                 )}
               </div>

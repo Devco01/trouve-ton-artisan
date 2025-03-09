@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaStar, FaStarHalfAlt, FaRegStar, FaMapMarkerAlt, FaUser } from 'react-icons/fa';
+import { FaStar, FaStarHalfAlt, FaRegStar, FaMapMarkerAlt } from 'react-icons/fa';
 import '../styles/components/artisanCard.scss';
 
 const ArtisanCard = ({ artisan }) => {
+  // Fonction pour obtenir les initiales
+  const getInitials = (name) => {
+    if (!name) return 'A';
+    return name.split(' ').map(n => n[0]).join('').toUpperCase();
+  };
+
   // Fonction pour afficher les étoiles selon la note
   const renderStars = (note) => {
     const stars = [];
@@ -33,19 +39,19 @@ const ArtisanCard = ({ artisan }) => {
             className="artisan-card__image" 
           />
         ) : (
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
-            height: '100%', 
-            backgroundColor: '#0072bc' 
-          }}>
-            <FaUser 
-              style={{ 
-                fontSize: '64px', 
-                color: 'white' 
-              }} 
-            />
+          <div 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              height: '100%', 
+              backgroundColor: '#0072bc',
+              color: 'white',
+              fontSize: '48px',
+              fontWeight: 'bold'
+            }}
+          >
+            {getInitials(artisan.nom)}
           </div>
         )}
       </div>

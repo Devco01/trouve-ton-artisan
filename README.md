@@ -95,7 +95,7 @@ Le site est conçu pour être accessible à tous, conformément à la norme WCAG
 
 ## Liens
 
-- [Maquettes Figma](lien-vers-vos-maquettes)
+- [Maquettes Figma] https://www.figma.com/design/kLHXOK9VVOUTh47sIUWgIj/Trouve-ton-artisan---Maquettes?node-id=24-411&t=FY9tkGCTb84xeKoJ-1
 - [Site en ligne](lien-vers-votre-site-déployé)
 
 ## Auteur
