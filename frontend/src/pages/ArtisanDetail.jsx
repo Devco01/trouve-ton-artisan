@@ -11,12 +11,6 @@ const ArtisanDetail = () => {
   const [error, setError] = useState(null);
   const { artisanId } = useParams();
 
-  // Fonction pour obtenir les initiales
-  const getInitials = (name) => {
-    if (!name) return 'A';
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
-  };
-
   useEffect(() => {
     const fetchArtisan = async () => {
       try {
@@ -32,7 +26,7 @@ const ArtisanDetail = () => {
         setArtisan({
           id: 1,
           nom: "Jean Dupont",
-          image: "/assets/images/artisans/artisan-1.jpg",
+          image: null,
           note: 4.8,
           nombreAvis: 124,
           specialite: { nom: "Électricité" },
@@ -105,22 +99,17 @@ const ArtisanDetail = () => {
                     src={artisan.image} 
                     alt={artisan.nom} 
                     className="artisan-detail-main__image" 
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "/assets/images/artisan-detail.jpg";
+                    }}
                   />
                 ) : (
-                  <div 
-                    style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center', 
-                      height: '100%', 
-                      backgroundColor: '#0072bc',
-                      color: 'white',
-                      fontSize: '72px',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {getInitials(artisan.nom)}
-                  </div>
+                  <img 
+                    src="/assets/images/artisan-detail.jpg" 
+                    alt={artisan.nom} 
+                    className="artisan-detail-main__image" 
+                  />
                 )}
               </div>
             </div>

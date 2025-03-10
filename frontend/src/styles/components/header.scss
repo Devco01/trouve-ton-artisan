@@ -14,16 +14,19 @@
     padding: 0 30px;
     max-width: 1140px;
     margin: 0 auto;
-    height: 80px;
+    height: 100px;
+    position: relative;
     
     @media (max-width: $breakpoint-md) {
       padding: 0 20px;
+      height: 90px;
     }
   }
   
   &__right {
     display: flex;
     align-items: center;
+    margin-left: auto;
     
     @media (max-width: $breakpoint-md) {
       justify-content: flex-end;
@@ -32,7 +35,7 @@
   }
   
   &__logo {
-    height: 60px;
+    height: 80px;
     display: flex;
     align-items: center;
     
@@ -42,10 +45,10 @@
     }
     
     @media (max-width: $breakpoint-md) {
-      height: 50px;
+      height: 65px;
       
       img {
-        height: 50px;
+        height: 65px;
       }
     }
   }
@@ -54,12 +57,16 @@
     display: flex;
     align-items: center;
     margin-right: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     
     @media (max-width: $breakpoint-md) {
       position: absolute;
       top: 80px;
       left: 0;
       right: 0;
+      transform: none;
       background-color: white;
       padding: 15px;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);

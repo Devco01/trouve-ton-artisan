@@ -6,6 +6,16 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__container">
+        {/* Section Logo */}
+        <div className="footer__section footer__section--logo">
+          <Link to="/" className="footer__logo">
+            <img src="/assets/images/logo.png" alt="Trouve ton artisan" />
+          </Link>
+          <p className="footer__tagline">
+            La plateforme qui vous met en relation avec les meilleurs artisans de la région Auvergne-Rhône-Alpes.
+          </p>
+        </div>
+        
         {/* Section Pages légales */}
         <div className="footer__section">
           <h3 className="footer__title">Pages légales</h3>
