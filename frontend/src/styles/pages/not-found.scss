@@ -2,15 +2,24 @@
 
 .not-found-page {
   padding: 4rem 0;
-  min-height: 70vh;
+  min-height: calc(100vh - 200px);
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
 }
 
 .not-found-content {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .not-found-image {
@@ -20,6 +29,7 @@
   img {
     width: 100%;
     height: auto;
+    object-fit: contain;
   }
 }
 
@@ -41,6 +51,9 @@
   color: $color-dark-gray;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .not-found-actions {
@@ -54,6 +67,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
   }
 }
 
@@ -61,6 +75,7 @@
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
 
   &-title {
     font-size: 1.25rem;
@@ -79,5 +94,19 @@
         text-decoration: underline;
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .not-found-title {
+    font-size: 4rem;
+  }
+  
+  .not-found-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .not-found-image {
+    max-width: 200px;
   }
 } 

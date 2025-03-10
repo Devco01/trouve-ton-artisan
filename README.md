@@ -155,8 +155,9 @@ Pour ce projet, nous avons adopté une approche pragmatique pour le déploiement
 
 ## Liens
 
-Figma: https://www.figma.com/design/kLHXOK9VVOUTh47sIUWgIj/Trouve-ton-artisan---Maquettes?node-id=0-1&t=lRwW94Ovy7RFXEHD-1
-Site en ligne: 
+1. Figma: https://www.figma.com/design/kLHXOK9VVOUTh47sIUWgIj/Trouve-ton-artisan---Maquettes?node-id=0-1&t=lRwW94Ovy7RFXEHD-1
+
+2. Site en ligne: 
 
 ## Auteur
 
