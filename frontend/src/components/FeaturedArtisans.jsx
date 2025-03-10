@@ -26,7 +26,7 @@ const FeaturedArtisans = () => {
           {
             id: 1,
             nom: "Jean Dupont",
-            image: "/assets/images/artisans/artisan-1.jpg",
+            image: null,
             note: 4.8,
             nombreAvis: 124,
             specialite: "Plombier",
@@ -38,7 +38,7 @@ const FeaturedArtisans = () => {
           {
             id: 2,
             nom: "Marie Martin",
-            image: "/assets/images/artisans/artisan-2.jpg",
+            image: null,
             note: 4.9,
             nombreAvis: 87,
             specialite: "Électricienne",
@@ -50,7 +50,7 @@ const FeaturedArtisans = () => {
           {
             id: 3,
             nom: "Pierre Durand",
-            image: "/assets/images/artisans/artisan-3.jpg",
+            image: null,
             note: 4.7,
             nombreAvis: 56,
             specialite: "Menuisier",

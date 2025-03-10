@@ -50,7 +50,7 @@ export const mockArtisans = [
     email: 'contact@dupont-electricite.fr',
     site: 'www.dupont-electricite.fr',
     description: 'Électricien qualifié avec plus de 15 ans d\'expérience. Spécialisé dans les installations électriques résidentielles et commerciales.',
-    image: '/assets/images/artisan1.svg',
+    image: null,
     certifications: ['Qualifélec', 'RGE'],
     dateCreation: '2020-05-12'
   },
@@ -73,7 +73,7 @@ export const mockArtisans = [
     email: 'contact@martin-plomberie.fr',
     site: 'www.martin-plomberie.fr',
     description: 'Plombier chauffagiste intervenant sur Grenoble et sa région. Installation, dépannage et entretien de vos systèmes de plomberie et chauffage.',
-    image: '/assets/images/artisan2.svg',
+    image: null,
     certifications: ['Qualibat', 'RGE'],
     dateCreation: '2019-03-24'
   },
@@ -96,7 +96,7 @@ export const mockArtisans = [
     email: 'contact@durand-menuiserie.fr',
     site: 'www.durand-menuiserie.fr',
     description: 'Menuisier passionné par le travail du bois. Création sur mesure de mobilier et aménagements intérieurs.',
-    image: '/assets/images/artisan3.svg',
+    image: null,
     certifications: ['Qualibat', 'Artisan d\'Art'],
     dateCreation: '2018-07-05'
   },
@@ -121,7 +121,7 @@ export const mockArtisans = [
     email: 'contact@salon-sophie.fr',
     site: 'www.salon-sophie.fr',
     description: 'Salon de coiffure proposant des prestations de qualité pour hommes et femmes. Spécialiste de la coloration végétale.',
-    image: '/assets/images/artisan4.svg',
+    image: null,
     certifications: ['Brevet Professionnel Coiffure'],
     dateCreation: '2015-09-10'
   },
@@ -144,7 +144,7 @@ export const mockArtisans = [
     email: 'contact@auto-repair.fr',
     site: 'www.auto-repair.fr',
     description: 'Garage automobile spécialisé dans la réparation et l\'entretien de véhicules toutes marques. Service rapide et de qualité.',
-    image: '/assets/images/artisan5.svg',
+    image: null,
     certifications: ['Certification Automobile'],
     dateCreation: '2012-04-15'
   },
@@ -167,7 +167,7 @@ export const mockArtisans = [
     email: 'contact@clean-net.fr',
     site: 'www.clean-net.fr',
     description: 'Entreprise de nettoyage professionnel pour particuliers et entreprises. Utilisation de produits écologiques et respectueux de l\'environnement.',
-    image: '/assets/images/artisan6.svg',
+    image: null,
     certifications: ['Certification Qualipropre'],
     dateCreation: '2017-11-20'
   },
@@ -192,7 +192,7 @@ export const mockArtisans = [
     email: 'contact@atelier-du-bois.fr',
     site: 'www.atelier-du-bois.fr',
     description: 'Ébéniste d\'art spécialisé dans la création de meubles sur mesure et la restauration de mobilier ancien. Travail minutieux et respect des traditions.',
-    image: '/assets/images/artisan7.svg',
+    image: null,
     certifications: ['Meilleur Ouvrier de France', 'Artisan d\'Art'],
     dateCreation: '2008-02-14'
   },
@@ -215,7 +215,7 @@ export const mockArtisans = [
     email: 'contact@terre-et-feu.fr',
     site: 'www.terre-et-feu.fr',
     description: 'Atelier de poterie artisanale proposant des pièces uniques et des collections limitées. Cours et stages pour tous niveaux.',
-    image: '/assets/images/artisan8.svg',
+    image: null,
     certifications: ['Artisan d\'Art'],
     dateCreation: '2014-06-30'
   },
@@ -238,7 +238,7 @@ export const mockArtisans = [
     email: 'contact@bijoux-creations.fr',
     site: 'www.bijoux-creations.fr',
     description: 'Bijoutier-joaillier créant des pièces uniques et personnalisées. Travail des métaux précieux et des pierres.',
-    image: '/assets/images/artisan9.svg',
+    image: null,
     certifications: ['Artisan d\'Art', 'CAP Art du Bijou'],
     dateCreation: '2011-09-05'
   },
@@ -263,7 +263,7 @@ export const mockArtisans = [
     email: 'contact@pain-antan.fr',
     site: 'www.pain-antan.fr',
     description: 'Boulangerie artisanale utilisant des farines biologiques et des méthodes traditionnelles. Spécialiste du levain naturel.',
-    image: '/assets/images/artisan10.svg',
+    image: null,
     certifications: ['Artisan Boulanger', 'Agriculture Biologique'],
     dateCreation: '2013-05-15'
   },
@@ -286,7 +286,7 @@ export const mockArtisans = [
     email: 'contact@douceurs-gourmandises.fr',
     site: 'www.douceurs-gourmandises.fr',
     description: 'Pâtisserie artisanale proposant des créations originales et des classiques revisités. Utilisation de produits locaux et de saison.',
-    image: '/assets/images/artisan11.svg',
+    image: null,
     certifications: ['Artisan Pâtissier'],
     dateCreation: '2016-10-12'
   },
@@ -309,7 +309,7 @@ export const mockArtisans = [
     email: 'contact@boucherie-terroir.fr',
     site: 'www.boucherie-terroir.fr',
     description: 'Boucherie traditionnelle proposant des viandes de qualité issues d\'élevages locaux. Fabrication artisanale de charcuteries.',
-    image: '/assets/images/artisan12.svg',
+    image: null,
     certifications: ['Artisan Boucher', 'Label Rouge'],
     dateCreation: '2010-03-28'
   }
@@ -379,7 +379,7 @@ export const mockTestimonials = [
     location: 'Lyon',
     text: 'Grâce à Trouve ton artisan, j\'ai pu trouver rapidement un électricien qualifié pour rénover l\'installation électrique de ma maison. Service impeccable !',
     rating: 5,
-    image: '/assets/images/artisan1.svg'
+    image: null
   },
   {
     id: 2,
@@ -387,7 +387,7 @@ export const mockTestimonials = [
     location: 'Grenoble',
     text: 'Je cherchais un menuisier spécialisé dans la rénovation de meubles anciens. La plateforme m\'a permis de trouver le professionnel idéal en quelques clics.',
     rating: 4,
-    image: '/assets/images/artisan2.svg'
+    image: null
   },
   {
     id: 3,
@@ -395,7 +395,7 @@ export const mockTestimonials = [
     location: 'Saint-Étienne',
     text: 'Service client réactif et artisans de qualité. J\'ai pu comparer plusieurs devis pour mon projet de salle de bain et faire le meilleur choix.',
     rating: 5,
-    image: '/assets/images/artisan3.svg'
+    image: null
   }
 ];
 

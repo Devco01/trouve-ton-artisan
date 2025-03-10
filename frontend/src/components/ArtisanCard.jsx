@@ -4,12 +4,6 @@ import { FaStar, FaStarHalfAlt, FaRegStar, FaMapMarkerAlt } from 'react-icons/fa
 import '../styles/components/artisanCard.scss';
 
 const ArtisanCard = ({ artisan }) => {
-  // Fonction pour obtenir les initiales
-  const getInitials = (name) => {
-    if (!name) return 'A';
-    return name.split(' ').map(n => n[0]).join('').toUpperCase();
-  };
-
   // Fonction pour afficher les étoiles selon la note
   const renderStars = (note) => {
     const stars = [];
@@ -37,21 +31,32 @@ const ArtisanCard = ({ artisan }) => {
             src={artisan.image} 
             alt={artisan.nom} 
             className="artisan-card__image" 
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/favicon-32.png";
+            }}
           />
         ) : (
           <div 
+            className="artisan-card__favicon-container"
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center', 
               height: '100%', 
-              backgroundColor: '#0072bc',
-              color: 'white',
-              fontSize: '48px',
-              fontWeight: 'bold'
+              backgroundColor: '#f5f9ff'
             }}
           >
-            {getInitials(artisan.nom)}
+            <img 
+              src="/favicon-32.png" 
+              alt="Logo Trouve ton artisan" 
+              className="artisan-card__favicon" 
+              style={{
+                width: '60px',
+                height: '60px',
+                objectFit: 'contain'
+              }}
+            />
           </div>
         )}
       </div>

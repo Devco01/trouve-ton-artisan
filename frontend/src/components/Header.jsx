@@ -49,7 +49,11 @@ const Header = () => {
       <div className="header__container">
         {/* Logo */}
         <Link to="/" className="header__logo">
-          <img src="/assets/images/logo.png" alt="Trouve ton artisan" />
+          <img 
+            src="/assets/images/logo.png" 
+            alt="Trouve ton artisan" 
+            style={{ width: '180px', height: 'auto', maxHeight: 'none' }}
+          />
         </Link>
         
         <div className="header__right">
