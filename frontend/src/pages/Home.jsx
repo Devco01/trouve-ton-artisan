@@ -1,5 +1,4 @@
 import React from 'react';
-import HomeHero from '../components/HomeHero';
 import HomeSteps from '../components/HomeSteps';
 import FeaturedArtisans from '../components/FeaturedArtisans';
 import '../styles/pages/home.scss';
@@ -7,9 +6,6 @@ import '../styles/pages/home.scss';
 const Home = () => {
   return (
     <main className="home-page">
-      {/* Section Hero avec barre de recherche */}
-      <HomeHero />
-      
       {/* Section Comment ça marche */}
       <section className="home-section home-section--alt">
         <div className="container">
