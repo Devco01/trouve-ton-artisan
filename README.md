@@ -11,12 +11,6 @@ La plateforme permet de :
 - Consulter les fiches détaillées des artisans
 - Contacter directement les artisans via un formulaire
 
-## Démo en ligne
-
-Le site est accessible à l'adresse suivante : [https://trouve-ton-artisan.vercel.app](https://trouve-ton-artisan.vercel.app)
-
-**Note importante sur la version en ligne** : Pour des raisons de coût, la version déployée utilise des données fictives au lieu d'une base de données MySQL réelle. Le code est cependant entièrement fonctionnel et prêt à être connecté à une base de données MySQL en production.
-
 ## Technologies utilisées
 
 ### Frontend
@@ -157,7 +151,7 @@ Pour ce projet, nous avons adopté une approche pragmatique pour le déploiement
 
 1. Figma: https://www.figma.com/design/kLHXOK9VVOUTh47sIUWgIj/Trouve-ton-artisan---Maquettes?node-id=0-1&t=lRwW94Ovy7RFXEHD-1
 
-2. Site en ligne: 
+2. Site en ligne: https://trouve-ton-artisan-theta.vercel.app/
 
 ## Auteur
 
