@@ -13,7 +13,9 @@ La plateforme permet de :
 
 ## Démo en ligne
 
-Le site est accessible à l'adresse suivante : [https://trouve-ton-artisan.fr](https://trouve-ton-artisan.fr)
+Le site est accessible à l'adresse suivante : [https://trouve-ton-artisan.vercel.app](https://trouve-ton-artisan.vercel.app)
+
+**Note importante sur la version en ligne** : Pour des raisons de coût, la version déployée utilise des données fictives au lieu d'une base de données MySQL réelle. Le code est cependant entièrement fonctionnel et prêt à être connecté à une base de données MySQL en production.
 
 ## Technologies utilisées
 
@@ -40,7 +42,7 @@ Le site est accessible à l'adresse suivante : [https://trouve-ton-artisan.fr](h
 
 ### Cloner le dépôt
 ```bash
-git clone https://github.com/Devco01/trouve-ton-artisan
+git clone https://github.com/votre-utilisateur/trouve-ton-artisan.git
 cd trouve-ton-artisan
 ```
 
@@ -131,6 +133,25 @@ Plusieurs mesures de sécurité ont été mises en place :
 - Protection CORS
 - Validation des données entrantes
 - Utilisation de Helmet pour sécuriser les en-têtes HTTP
+
+## Approche de déploiement
+
+Pour ce projet, nous avons adopté une approche pragmatique pour le déploiement :
+
+1. **Développement local complet** :
+   - Développement du frontend et du backend avec une base de données MySQL locale
+   - Tests complets de toutes les fonctionnalités en local
+
+2. **Déploiement du frontend uniquement** :
+   - Le frontend est déployé sur Vercel
+   - Pour éviter les coûts d'hébergement d'une base de données MySQL en production, le frontend utilise des données fictives en mode production
+   - Le code est conçu pour basculer automatiquement entre les données fictives (en production) et les appels API réels (en développement)
+
+3. **Code prêt pour un déploiement complet** :
+   - Le code du backend est entièrement fonctionnel et prêt à être déployé
+   - Les scripts SQL pour la création et l'alimentation de la base de données sont inclus
+   - La documentation explique comment déployer l'application complète
+
 
 ## Auteurs
 
