@@ -11,72 +11,126 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px;
+    padding: 0 20px;
     max-width: 1140px;
     margin: 0 auto;
-    height: 100px;
+    height: 80px;
     position: relative;
     
     @media (max-width: $breakpoint-md) {
-      padding: 0 20px;
-      height: 90px;
-    }
-  }
-  
-  &__right {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    
-    @media (max-width: $breakpoint-md) {
-      justify-content: flex-end;
-      flex: 1;
+      height: 70px;
+      flex-wrap: wrap;
     }
   }
   
   &__logo {
-    height: 80px;
+    height: 60px;
     display: flex;
     align-items: center;
     
     img {
       height: 100%;
+      width: auto;
+      max-width: 180px;
       object-fit: contain;
     }
     
     @media (max-width: $breakpoint-md) {
-      height: 65px;
+      height: 50px;
+    }
+  }
+  
+  &__search-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 400px;
+    margin: 0 20px;
+    
+    @media (max-width: $breakpoint-md) {
+      margin: 0 10px;
+    }
+  }
+  
+  &__search {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    
+    input {
+      border: none;
+      background: transparent;
+      padding: 8px 12px;
+      width: 100%;
+      outline: none;
+      font-family: $font-family-base;
+      font-size: 14px;
+      color: $color-dark-blue;
       
-      img {
-        height: 65px;
+      &::placeholder {
+        color: rgba(0, 73, 124, 0.6);
       }
+    }
+    
+    button {
+      background: $color-blue;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+      
+      &:hover {
+        background-color: $color-dark-blue;
+      }
+    }
+  }
+  
+  &__hamburger {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $color-dark-blue;
+    padding: 5px;
+    z-index: 1001;
+    
+    @media (max-width: $breakpoint-md) {
+      display: block;
     }
   }
   
   &__nav {
     display: flex;
     align-items: center;
-    margin-right: 20px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     
     @media (max-width: $breakpoint-md) {
-      position: absolute;
-      top: 80px;
+      position: fixed;
+      top: 70px;
       left: 0;
       right: 0;
-      transform: none;
+      width: 100%;
       background-color: white;
       padding: 15px;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
       flex-direction: column;
       align-items: center;
-      display: none;
-      margin-right: 0;
+      z-index: 1000;
+      
+      &:not(.open) {
+        display: none !important;
+      }
       
       &.open {
-        display: flex;
+        display: flex !important;
       }
     }
   }
@@ -145,66 +199,6 @@
       padding: 10px;
     }
   }
-  
-  &__hamburger {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: $color-dark-blue;
-    
-    @media (max-width: $breakpoint-md) {
-      display: block;
-    }
-  }
-  
-  &__search {
-    display: flex;
-    align-items: center;
-    background-color: #f5f5f5;
-    border-radius: 4px;
-    overflow: hidden;
-    width: 250px;
-    border: 1px solid #e0e0e0;
-    
-    input {
-      border: none;
-      background: transparent;
-      padding: 8px 12px;
-      width: 100%;
-      outline: none;
-      font-family: $font-family-base;
-      font-size: 14px;
-      color: $color-dark-blue;
-      
-      &::placeholder {
-        color: rgba(0, 73, 124, 0.6);
-      }
-    }
-    
-    button {
-      background: $color-blue;
-      border: none;
-      color: white;
-      padding: 8px 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s;
-      
-      &:hover {
-        background-color: $color-dark-blue;
-      }
-    }
-    
-    @media (max-width: $breakpoint-md) {
-      width: 200px;
-    }
-    
-    @media (max-width: $breakpoint-sm) {
-      width: 150px;
-    }
-  }
 }
 
 // Styles pour les boutons de recherche
@@ -248,5 +242,4 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  font-weight: bold;
 } 
