@@ -1,103 +1,141 @@
 # Trouve ton artisan
 
-Application web permettant de mettre en relation les particuliers avec des artisans qualifiés de la région Auvergne-Rhône-Alpes.
+Plateforme dédiée aux artisans de la région Auvergne-Rhône-Alpes, permettant aux particuliers de trouver facilement un artisan et de le contacter.
 
-## Présentation du projet
+## Présentation
 
-Ce projet a été développé pour la région Auvergne-Rhône-Alpes afin de mettre en valeur les artisans locaux et faciliter leur mise en relation avec les particuliers.
+Ce projet a été réalisé pour la région Auvergne-Rhône-Alpes afin de valoriser les artisans locaux et faciliter la mise en relation entre artisans et particuliers.
 
 La plateforme permet de :
-- Rechercher des artisans par catégorie, localisation ou mot-clé
-- Consulter les profils détaillés des artisans
-- Contacter directement les artisans
-- Découvrir les spécialités par catégorie
+- Rechercher des artisans par catégorie ou par nom
+- Consulter les fiches détaillées des artisans
+- Contacter directement les artisans via un formulaire
 
-## Fonctionnalités principales
+## Démo en ligne
 
-- Interface utilisateur intuitive et responsive
-- Recherche multicritères d'artisans
-- Fiches détaillées des artisans avec coordonnées et spécialités
-- Système de catégorisation des métiers
-- Formulaire de contact
-- Newsletter pour rester informé
+Le site est accessible à l'adresse suivante : [https://trouve-ton-artisan.fr](https://trouve-ton-artisan.fr)
 
 ## Technologies utilisées
 
-- **Frontend** : React.js, SCSS, React Router, React Icons
-- **Données** : JSON statique (pour la démonstration)
-- **Styles** : SCSS avec architecture BEM
+### Frontend
+- React.js
+- Bootstrap
+- Sass
+- React Router
+
+### Backend
+- Node.js
+- Express
+- Sequelize
+- MySQL/MariaDB
+- TypeScript
 
 ## Prérequis
 
 - Node.js (v14 ou supérieur)
-- npm (v6 ou supérieur)
-- Navigateur web moderne (Chrome, Firefox, Safari, Edge)
+- MySQL ou MariaDB
+- npm ou yarn
 
-## Installation et démarrage
+## Installation
 
-1. Cloner le dépôt
+### Cloner le dépôt
 ```bash
 git clone https://github.com/Devco01/trouve-ton-artisan
 cd trouve-ton-artisan
 ```
 
-2. Installer les dépendances
+### Installation du backend
 ```bash
-cd frontend
+cd backend
 npm install
+cp .env.example .env
+# Modifier les valeurs dans le fichier .env selon votre environnement
 ```
 
-3. Démarrer l'application en mode développement
+### Création et alimentation de la base de données
 ```bash
+npm run db:create
+npm run db:seed
+```
+
+### Installation du frontend
+```bash
+cd ../frontend
+npm install
+cp .env.example .env
+# Modifier les valeurs dans le fichier .env selon votre environnement
+```
+
+## Lancement en développement
+
+### Backend
+```bash
+cd backend
+npm run dev
+```
+
+### Frontend
+```bash
+cd frontend
 npm start
 ```
 
-L'application sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
+## Déploiement en production
 
-4. Construire l'application pour la production
+### Backend
 ```bash
+cd backend
 npm run build
+npm start
+```
+
+### Frontend
+```bash
+cd frontend
+npm run build
+# Déployer le contenu du dossier 'build' sur votre serveur web
 ```
 
 ## Structure du projet
 
 ```
-frontend/
-├── public/                # Fichiers statiques
-│   ├── assets/            # Images, icônes, etc.
-│   └── index.html         # Page HTML principale
-├── src/                   # Code source
-│   ├── components/        # Composants React réutilisables
-│   ├── context/           # Contextes React pour la gestion d'état
-│   ├── data/              # Données fictives pour le développement
-│   ├── pages/             # Pages de l'application
-│   ├── services/          # Services pour les appels API
-│   ├── styles/            # Fichiers SCSS
-│   ├── App.jsx            # Composant principal
-│   └── index.js           # Point d'entrée
-└── package.json           # Dépendances et scripts
+trouve-ton-artisan/
+├── backend/             # API Node.js
+│   ├── src/             # Code source TypeScript
+│   ├── dist/            # Code compilé JavaScript
+│   └── database/        # Scripts SQL
+├── frontend/            # Application React
+│   ├── public/          # Fichiers statiques
+│   └── src/             # Code source React
+└── docs/                # Documentation
 ```
 
-## Mesures de sécurité
+## Fonctionnalités
 
-Le projet implémente plusieurs mesures de sécurité :
-- Validation des données entrantes
-- Protection contre les attaques XSS
-- Gestion sécurisée des formulaires
-- Utilisation de HTTPS pour les communications
+- Recherche d'artisans par catégorie
+- Recherche d'artisans par nom
+- Affichage des artisans du mois
+- Consultation des fiches détaillées des artisans
+- Formulaire de contact pour chaque artisan
+- Pages légales (mentions légales, données personnelles, etc.)
 
 ## Accessibilité
 
-Le site est conçu pour être accessible à tous, conformément à la norme WCAG 2.1, avec une attention particulière portée à :
-- La navigation au clavier
-- Le contraste des couleurs
-- La structure sémantique du HTML
+Le site a été développé en suivant les normes WCAG 2.1 pour garantir son accessibilité à tous les utilisateurs, y compris les personnes en situation de handicap.
 
-## Liens
+## Sécurité
 
-- [Maquettes Figma] https://www.figma.com/design/kLHXOK9VVOUTh47sIUWgIj/Trouve-ton-artisan---Maquettes?node-id=0-1&t=lRwW94Ovy7RFXEHD-1
-- [Site en ligne](lien-vers-votre-site-déployé)
+Plusieurs mesures de sécurité ont été mises en place :
+- Protection contre les injections SQL via Sequelize
+- Limitation du taux de requêtes (rate limiting)
+- Protection CORS
+- Validation des données entrantes
+- Utilisation de Helmet pour sécuriser les en-têtes HTTP
 
-## Auteur
+## Auteurs
 
-Devco01
+- Votre nom - [votre-email@exemple.com](mailto:votre-email@exemple.com)
+
+## Licence
+
+Ce projet est la propriété de la région Auvergne-Rhône-Alpes.
