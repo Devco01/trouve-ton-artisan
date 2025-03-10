@@ -37,32 +37,15 @@ INSERT INTO specialites (nom, description, id_categorie) VALUES
 ('Fromagerie', 'Fabrication et affinage de fromages', 4),
 ('Chocolaterie', 'Création de chocolats artisanaux', 4);
 
--- Insertion des artisans
-INSERT INTO artisans (nom, prenom, email, telephone, adresse, code_postal, ville, description, site_web, note, id_specialite) VALUES
--- Plombiers
-('Dupont', 'Jean', 'jean.dupont@email.com', '0472123456', '15 rue de la République', '69001', 'Lyon', 'Plombier expérimenté spécialisé dans les installations sanitaires et le dépannage d\'urgence.', 'www.plomberie-dupont.fr', 4.5, 1),
-('Martin', 'Sophie', 'sophie.martin@email.com', '0476987654', '8 avenue Gambetta', '38000', 'Grenoble', 'Plombière qualifiée proposant des solutions écologiques pour vos installations.', 'www.eco-plomberie-martin.fr', 4.8, 1),
--- Électriciens
-('Petit', 'Thomas', 'thomas.petit@email.com', '0437654321', '25 rue Garibaldi', '69003', 'Lyon', 'Électricien certifié pour tous vos travaux d\'installation et de mise aux normes.', 'www.electricite-petit.fr', 4.2, 2),
-('Leroy', 'Marie', 'marie.leroy@email.com', '0477123456', '12 rue de la Paix', '42000', 'Saint-Étienne', 'Électricienne spécialisée dans les installations domotiques et les économies d\'énergie.', 'www.domotique-leroy.fr', 4.7, 2),
--- Menuisiers
-('Bernard', 'Pierre', 'pierre.bernard@email.com', '0474567890', '5 rue des Artisans', '69100', 'Villeurbanne', 'Menuisier traditionnel travaillant le bois massif pour des créations sur mesure.', 'www.menuiserie-bernard.fr', 4.9, 3),
-('Moreau', 'Claire', 'claire.moreau@email.com', '0475123456', '18 boulevard des Alpes', '26000', 'Valence', 'Menuisière spécialisée dans la restauration de meubles anciens et la création contemporaine.', 'www.moreau-menuiserie.fr', 4.6, 3),
--- Maçons
-('Dubois', 'Antoine', 'antoine.dubois@email.com', '0478901234', '7 rue du Commerce', '69002', 'Lyon', 'Maçon expérimenté pour tous vos travaux de construction et rénovation.', 'www.maconnerie-dubois.fr', 4.3, 4),
-('Lefebvre', 'Julie', 'julie.lefebvre@email.com', '0473456789', '22 avenue Jean Jaurès', '63000', 'Clermont-Ferrand', 'Maçonne spécialisée dans les techniques traditionnelles et écologiques.', 'www.eco-maconnerie-lefebvre.fr', 4.4, 4),
--- Peintres
-('Roux', 'Michel', 'michel.roux@email.com', '0472345678', '9 rue Molière', '69006', 'Lyon', 'Peintre en bâtiment proposant des finitions soignées et des conseils en décoration.', 'www.peinture-roux.fr', 4.1, 5),
-('Fournier', 'Émilie', 'emilie.fournier@email.com', '0479876543', '14 rue de la Liberté', '74000', 'Annecy', 'Peintre décoratrice spécialisée dans les techniques anciennes et les enduits naturels.', 'www.deco-fournier.fr', 4.8, 5),
--- Coiffeurs
-('Girard', 'Stéphane', 'stephane.girard@email.com', '0472234567', '30 rue Victor Hugo', '69002', 'Lyon', 'Coiffeur visagiste proposant des coupes tendance et personnalisées.', 'www.coiffure-girard.fr', 4.6, 6),
-('Bonnet', 'Céline', 'celine.bonnet@email.com', '0476543210', '5 place Grenette', '38000', 'Grenoble', 'Coiffeuse spécialisée dans les colorations naturelles et les soins capillaires bio.', 'www.bio-coiffure-bonnet.fr', 4.9, 6),
--- Esthéticiennes
-('Lambert', 'Nathalie', 'nathalie.lambert@email.com', '0474678901', '12 rue de la République', '69001', 'Lyon', 'Esthéticienne proposant des soins du visage et du corps personnalisés.', 'www.esthetique-lambert.fr', 4.7, 7),
-('Faure', 'Isabelle', 'isabelle.faure@email.com', '0477890123', '8 rue des Jardins', '42000', 'Saint-Étienne', 'Esthéticienne spécialisée dans les techniques de bien-être et les soins naturels.', 'www.bien-etre-faure.fr', 4.5, 7),
--- Mécaniciens
-('Mercier', 'David', 'david.mercier@email.com', '0478123456', '45 avenue Berthelot', '69007', 'Lyon', 'Mécanicien automobile toutes marques avec 20 ans d\'expérience.', 'www.garage-mercier.fr', 4.2, 8),
-('Blanc', 'Julien', 'julien.blanc@email.com', '0475678901', '18 rue de l\'Industrie', '26000', 'Valence', 'Mécanicien spécialisé dans les véhicules anciens et de collection.', 'www.retro-garage-blanc.fr', 4.8, 8);
+-- Insertion des artisans basée sur l'image fournie
+INSERT INTO artisans (nom, email, site_web, note, ville, description, id_specialite) VALUES
+('Boucherie Dumont', 'boucherie.dumont@gmail.com', '', 4.5, 'Lyon', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend...', 18), -- Boucherie
+('Au pain chaud', 'aupainchaud@hotmail.com', '', 4.8, 'Montélimar', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend...', 16), -- Boulangerie
+('Chocolaterie Labbé', 'chocolaterie-labbe@gmail.com', 'https://chocolaterie-labbe.fr', 4.9, 'Lyon', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend...', 20), -- Chocolaterie
+('Traiteur Truchon', 'contact@truchon-traiteur.fr', 'https://truchon-traiteur.fr', 4.1, 'Lyon', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend...', 4), -- Alimentation
+('Salon Salmons', 'c.salmons@live.com', '', 5.0, 'Évian', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend...', 6), -- Coiffure
+('Mont Blanc Électricité', 'contact@mont-blanc-electricite.com', 'https://mont-blanc-electricite.com', 4.5, 'Chamonix', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend...', 2), -- Électricité
+-- Continuer avec les autres artisans de l'image...
 
 -- Insertion des avis
 INSERT INTO avis (commentaire, note, id_artisan) VALUES
