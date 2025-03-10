@@ -44,7 +44,7 @@ const ArtisansList = () => {
           if (foundCategory) {
             setCategory(foundCategory);
             // Récupérer les artisans de cette catégorie
-            data = await categoryService.getArtisans(foundCategory.id);
+            data = await artisanService.getByCategory(foundCategory.id);
             console.log('Artisans récupérés pour la catégorie:', data);
             
             // Si aucun artisan n'est trouvé, essayons de filtrer manuellement

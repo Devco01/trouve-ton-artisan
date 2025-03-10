@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { mockArtisans, mockCategories, mockSpecialties } from '../data/mockData';
+import { mockArtisans, mockCategories, mockSpecialties, Fr } from '../data/mockData';
 
 // Forcer l'utilisation des données fictives même en développement
 // Mettez cette variable à false si vous voulez utiliser l'API réelle en développement

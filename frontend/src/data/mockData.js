@@ -1,5 +1,18 @@
 // Données fictives pour l'application
 
+// Ajout d'un objet Fr pour résoudre l'erreur Fr.getArtisans
+export const Fr = {
+  getArtisans: (categoryId) => {
+    if (categoryId) {
+      return mockArtisans.filter(artisan => 
+        artisan.categorieId === parseInt(categoryId) || 
+        (artisan.categorie && mockCategories.find(cat => cat.id === parseInt(categoryId))?.nom === artisan.categorie)
+      );
+    }
+    return mockArtisans;
+  }
+};
+
 export const mockCategories = [
   { id: 1, nom: 'Bâtiment', slug: 'batiment', nombreArtisans: 3 },
   { id: 2, nom: 'Services', slug: 'services', nombreArtisans: 3 },
