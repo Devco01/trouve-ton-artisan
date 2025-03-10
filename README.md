@@ -153,6 +153,8 @@ Pour ce projet, nous avons adopté une approche pragmatique pour le déploiement
 
 2. Site en ligne: https://trouve-ton-artisan-theta.vercel.app/
 
+3. Backend (optionnel): https://trouve-ton-artisan-backend.vercel.app/
+
 ## Auteur
 
 Devco01
