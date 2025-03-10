@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import ArtisanCard from './ArtisanCard';
 import { artisanService } from '../services/api';
 
@@ -84,12 +83,6 @@ const FeaturedArtisans = () => {
             {artisans.map((artisan) => (
               <ArtisanCard key={artisan.id} artisan={artisan} />
             ))}
-          </div>
-          
-          <div className="text-center mt-4">
-            <Link to="/categories/batiment" className="btn btn-outline-primary">
-              Voir tous les artisans
-            </Link>
           </div>
         </>
       )}
