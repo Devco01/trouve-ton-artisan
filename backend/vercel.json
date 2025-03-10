@@ -1,12 +1,12 @@
 {
   "version": 2,
   "builds": [
-    { "src": "dist/index.js", "use": "@vercel/node" }
+    { "src": "src/index.ts", "use": "@vercel/node" }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "dist/index.js",
+      "dest": "src/index.ts",
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -19,7 +19,7 @@
     },
     { 
       "src": "/(.*)", 
-      "dest": "dist/index.js",
+      "dest": "src/index.ts",
       "headers": {
         "X-Content-Type-Options": "nosniff",
         "X-Frame-Options": "DENY",
