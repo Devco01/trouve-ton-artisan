@@ -42,7 +42,7 @@ Le site est accessible à l'adresse suivante : [https://trouve-ton-artisan.verce
 
 ### Cloner le dépôt
 ```bash
-git clone https://github.com/votre-utilisateur/trouve-ton-artisan.git
+git clone https://github.com/Devco01/trouve-ton-artisan
 cd trouve-ton-artisan
 ```
 
@@ -153,10 +153,11 @@ Pour ce projet, nous avons adopté une approche pragmatique pour le déploiement
    - La documentation explique comment déployer l'application complète
 
 
-## Auteurs
+## Liens
 
-- Votre nom - [votre-email@exemple.com](mailto:votre-email@exemple.com)
+Figma: https://www.figma.com/design/kLHXOK9VVOUTh47sIUWgIj/Trouve-ton-artisan---Maquettes?node-id=0-1&t=lRwW94Ovy7RFXEHD-1
+Site en ligne: 
 
-## Licence
+## Auteur
 
-Ce projet est la propriété de la région Auvergne-Rhône-Alpes.
+Devco01
