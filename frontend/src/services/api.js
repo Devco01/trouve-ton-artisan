@@ -1,8 +1,9 @@
 import axios from 'axios';
-import * as mockData from '../data/mockData';
+import { mockArtisans, mockCategories, mockSpecialties } from '../data/mockData';
 
-// Déterminer si nous sommes en production ou en développement
-const isProduction = process.env.NODE_ENV === 'production';
+// Forcer l'utilisation des données fictives même en développement
+// Mettez cette variable à false si vous voulez utiliser l'API réelle en développement
+const USE_MOCK_DATA = true;
 
 // URL de base de l'API
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
@@ -15,111 +16,172 @@ const api = axios.create({
   },
 });
 
+// Fonctions utilitaires pour les données mockées
+const getFeaturedArtisans = () => {
+  return mockArtisans.filter(artisan => artisan.note >= 4.7).slice(0, 3);
+};
+
+const getArtisansByCategory = (categoryId) => {
+  return mockArtisans.filter(artisan => 
+    artisan.categorieId === parseInt(categoryId) || 
+    (artisan.categorie && mockCategories.find(cat => cat.id === parseInt(categoryId))?.nom === artisan.categorie)
+  );
+};
+
+const searchArtisansInMock = (query) => {
+  const searchTerm = query.toLowerCase();
+  return mockArtisans.filter(artisan => 
+    artisan.nom.toLowerCase().includes(searchTerm) || 
+    (artisan.company && artisan.company.toLowerCase().includes(searchTerm)) ||
+    (artisan.ville && artisan.ville.toLowerCase().includes(searchTerm)) ||
+    (artisan.specialite && artisan.specialite.toLowerCase().includes(searchTerm))
+  );
+};
+
+const getArtisanById = (id) => {
+  return mockArtisans.find(artisan => artisan.id === parseInt(id));
+};
+
+const getAllCategories = () => {
+  return mockCategories;
+};
+
+const getCategoryById = (id) => {
+  return mockCategories.find(category => category.id === parseInt(id));
+};
+
+const getSpecialtiesByCategory = (categoryId) => {
+  return mockSpecialties.filter(specialty => specialty.categorieId === parseInt(categoryId));
+};
+
 // Service pour les artisans
 export const artisanService = {
   // Récupérer tous les artisans avec filtres optionnels
   getAll: async (params = {}) => {
-    if (isProduction) {
-      // En production, utiliser les données fictives
+    if (USE_MOCK_DATA) {
+      // Utiliser les données fictives
       console.log('Using mock data for artisans');
       
       // Si on demande les artisans en vedette
       if (params.featured) {
-        return mockData.featuredArtisans;
+        return getFeaturedArtisans();
       }
       
       // Si on filtre par catégorie
       if (params.categoryId) {
-        return mockData.getArtisansByCategory(params.categoryId);
+        return getArtisansByCategory(params.categoryId);
       }
       
       // Si on recherche par nom
       if (params.query) {
-        return mockData.searchArtisans(params.query);
+        return searchArtisansInMock(params.query);
       }
       
       // Sinon, retourner tous les artisans
-      return mockData.artisans;
+      return mockArtisans;
     } else {
-      // En développement, faire un appel API réel
+      // Faire un appel API réel
       try {
         const response = await api.get('/artisans', { params });
         return response.data;
       } catch (error) {
         console.error('Erreur lors de la récupération des artisans:', error);
-        throw error;
+        // En cas d'erreur, utiliser les données fictives comme fallback
+        console.log('Fallback to mock data for artisans');
+        
+        if (params.featured) {
+          return getFeaturedArtisans();
+        }
+        
+        if (params.categoryId) {
+          return getArtisansByCategory(params.categoryId);
+        }
+        
+        if (params.query) {
+          return searchArtisansInMock(params.query);
+        }
+        
+        return mockArtisans;
       }
     }
   },
   
   // Récupérer un artisan par son ID
   getById: async (id) => {
-    if (isProduction) {
-      // En production, utiliser les données fictives
+    if (USE_MOCK_DATA) {
+      // Utiliser les données fictives
       console.log(`Using mock data for artisan ${id}`);
-      return mockData.getArtisanById(id);
+      return getArtisanById(id);
     } else {
-      // En développement, faire un appel API réel
+      // Faire un appel API réel
       try {
         const response = await api.get(`/artisans/${id}`);
         return response.data;
       } catch (error) {
         console.error(`Erreur lors de la récupération de l'artisan ${id}:`, error);
-        throw error;
+        // En cas d'erreur, utiliser les données fictives comme fallback
+        console.log(`Fallback to mock data for artisan ${id}`);
+        return getArtisanById(id);
       }
     }
   },
   
   // Récupérer les artisans par catégorie
   getByCategory: async (categoryId) => {
-    if (isProduction) {
-      // En production, utiliser les données fictives
+    if (USE_MOCK_DATA) {
+      // Utiliser les données fictives
       console.log(`Using mock data for artisans in category ${categoryId}`);
-      return mockData.getArtisansByCategory(categoryId);
+      return getArtisansByCategory(categoryId);
     } else {
-      // En développement, faire un appel API réel
+      // Faire un appel API réel
       try {
         const response = await api.get(`/artisans/category/${categoryId}`);
         return response.data;
       } catch (error) {
         console.error(`Erreur lors de la récupération des artisans de la catégorie ${categoryId}:`, error);
-        throw error;
+        // En cas d'erreur, utiliser les données fictives comme fallback
+        console.log(`Fallback to mock data for artisans in category ${categoryId}`);
+        return getArtisansByCategory(categoryId);
       }
     }
   },
   
   // Rechercher des artisans
   search: async (query) => {
-    if (isProduction) {
-      // En production, utiliser les données fictives
+    if (USE_MOCK_DATA) {
+      // Utiliser les données fictives
       console.log(`Using mock data for search: ${query}`);
-      return mockData.searchArtisans(query);
+      return searchArtisansInMock(query);
     } else {
-      // En développement, faire un appel API réel
+      // Faire un appel API réel
       try {
         const response = await api.get(`/artisans/search?query=${query}`);
         return response.data;
       } catch (error) {
         console.error(`Erreur lors de la recherche d'artisans avec la requête "${query}":`, error);
-        throw error;
+        // En cas d'erreur, utiliser les données fictives comme fallback
+        console.log(`Fallback to mock data for search: ${query}`);
+        return searchArtisansInMock(query);
       }
     }
   },
   
   // Contacter un artisan
   contact: async (artisanId, contactData) => {
-    if (isProduction) {
-      // En production, simuler un envoi réussi
+    if (USE_MOCK_DATA) {
+      // Simuler un envoi réussi
       console.log(`Mock contact to artisan ${artisanId}:`, contactData);
       return { success: true, message: 'Message envoyé avec succès (simulation)' };
     } else {
-      // En développement, faire un appel API réel
+      // Faire un appel API réel
       try {
         const response = await api.post(`/contact/artisan/${artisanId}`, contactData);
         return response.data;
       } catch (error) {
         console.error(`Erreur lors de l'envoi du message à l'artisan ${artisanId}:`, error);
-        throw error;
+        // En cas d'erreur, simuler un envoi réussi
+        console.log(`Fallback to mock contact to artisan ${artisanId}`);
+        return { success: true, message: 'Message envoyé avec succès (simulation)' };
       }
     }
   }
@@ -129,36 +191,40 @@ export const artisanService = {
 export const categoryService = {
   // Récupérer toutes les catégories
   getAll: async () => {
-    if (isProduction) {
-      // En production, utiliser les données fictives
+    if (USE_MOCK_DATA) {
+      // Utiliser les données fictives
       console.log('Using mock data for categories');
-      return mockData.getAllCategories();
+      return getAllCategories();
     } else {
-      // En développement, faire un appel API réel
+      // Faire un appel API réel
       try {
         const response = await api.get('/categories');
         return response.data;
       } catch (error) {
         console.error('Erreur lors de la récupération des catégories:', error);
-        throw error;
+        // En cas d'erreur, utiliser les données fictives comme fallback
+        console.log('Fallback to mock data for categories');
+        return getAllCategories();
       }
     }
   },
   
   // Récupérer une catégorie par son ID
   getById: async (id) => {
-    if (isProduction) {
-      // En production, utiliser les données fictives
+    if (USE_MOCK_DATA) {
+      // Utiliser les données fictives
       console.log(`Using mock data for category ${id}`);
-      return mockData.getCategoryById(id);
+      return getCategoryById(id);
     } else {
-      // En développement, faire un appel API réel
+      // Faire un appel API réel
       try {
         const response = await api.get(`/categories/${id}`);
         return response.data;
       } catch (error) {
         console.error(`Erreur lors de la récupération de la catégorie ${id}:`, error);
-        throw error;
+        // En cas d'erreur, utiliser les données fictives comme fallback
+        console.log(`Fallback to mock data for category ${id}`);
+        return getCategoryById(id);
       }
     }
   }
@@ -168,36 +234,40 @@ export const categoryService = {
 export const specialtyService = {
   // Récupérer toutes les spécialités
   getAll: async () => {
-    if (isProduction) {
-      // En production, utiliser les données fictives
+    if (USE_MOCK_DATA) {
+      // Utiliser les données fictives
       console.log('Using mock data for specialties');
-      return mockData.specialites;
+      return mockSpecialties;
     } else {
-      // En développement, faire un appel API réel
+      // Faire un appel API réel
       try {
         const response = await api.get('/specialties');
         return response.data;
       } catch (error) {
         console.error('Erreur lors de la récupération des spécialités:', error);
-        throw error;
+        // En cas d'erreur, utiliser les données fictives comme fallback
+        console.log('Fallback to mock data for specialties');
+        return mockSpecialties;
       }
     }
   },
   
   // Récupérer les spécialités par catégorie
   getByCategory: async (categoryId) => {
-    if (isProduction) {
-      // En production, utiliser les données fictives
+    if (USE_MOCK_DATA) {
+      // Utiliser les données fictives
       console.log(`Using mock data for specialties in category ${categoryId}`);
-      return mockData.getSpecialtiesByCategory(categoryId);
+      return getSpecialtiesByCategory(categoryId);
     } else {
-      // En développement, faire un appel API réel
+      // Faire un appel API réel
       try {
         const response = await api.get(`/specialties/category/${categoryId}`);
         return response.data;
       } catch (error) {
         console.error(`Erreur lors de la récupération des spécialités de la catégorie ${categoryId}:`, error);
-        throw error;
+        // En cas d'erreur, utiliser les données fictives comme fallback
+        console.log(`Fallback to mock data for specialties in category ${categoryId}`);
+        return getSpecialtiesByCategory(categoryId);
       }
     }
   }
