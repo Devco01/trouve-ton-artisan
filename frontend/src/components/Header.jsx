@@ -8,7 +8,23 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [categories, setCategories] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
+
+  // Détecter si l'écran est mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -41,6 +57,7 @@ const Header = () => {
     if (searchTerm.trim()) {
       navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
       setSearchTerm('');
+      if (menuOpen) setMenuOpen(false);
     }
   };
 
@@ -52,29 +69,11 @@ const Header = () => {
           <img 
             src="/assets/images/logo.png" 
             alt="Trouve ton artisan" 
-            style={{ width: '180px', height: 'auto', maxHeight: 'none' }}
           />
         </Link>
-        
-        <div className="header__right">
-          {/* Navigation */}
-          <nav className={`header__nav ${menuOpen ? 'open' : ''}`}>
-            <ul className="header__menu">
-              {categories.map(category => (
-                <li key={category.id} className="header__menu-item">
-                  <NavLink 
-                    to={`/categories/${category.slug}`} 
-                    className="header__link" 
-                    onClick={handleLinkClick}
-                  >
-                    {category.nom}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          
-          {/* Barre de recherche */}
+
+        {/* Barre de recherche */}
+        <div className="header__search-container">
           <form onSubmit={handleSearch} className="header__search">
             <input
               type="text"
@@ -90,9 +89,33 @@ const Header = () => {
         </div>
         
         {/* Bouton hamburger pour mobile */}
-        <div className="header__hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        <button 
+          className="header__hamburger" 
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={menuOpen}
+        >
           {menuOpen ? <FaTimes /> : <FaBars />}
-        </div>
+        </button>
+        
+        {/* Navigation - caché sur mobile sauf si menuOpen est true */}
+        {(!isMobile || menuOpen) && (
+          <nav className={`header__nav ${menuOpen ? 'open' : ''}`} aria-hidden={!menuOpen && isMobile}>
+            <ul className="header__menu">
+              {categories.map(category => (
+                <li key={category.id} className="header__menu-item">
+                  <NavLink 
+                    to={`/categories/${category.slug}`} 
+                    className="header__link" 
+                    onClick={handleLinkClick}
+                  >
+                    {category.nom}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </div>
     </header>
   );
