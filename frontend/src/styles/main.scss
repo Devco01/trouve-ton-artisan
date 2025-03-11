@@ -18,16 +18,33 @@ html, body {
   font-family: $font-family-base;
   color: $color-dark-gray;
   background-color: #f8f9fa;
+  overflow-x: hidden; /* Empêche le défilement horizontal */
 }
 
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative; /* Assure que les éléments enfants positionnés sont relatifs à #root */
+  overflow-x: hidden; /* Empêche le défilement horizontal */
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-  flex: 1;
+  flex: 1 0 auto; /* Permet au contenu principal de s'étendre mais jamais de rétrécir */
+  width: 100%; /* Assure que le contenu principal ne dépasse pas la largeur de la fenêtre */
+  max-width: 100%; /* Empêche le débordement horizontal */
+  overflow-x: hidden; /* Empêche le défilement horizontal */
+  padding-bottom: 50px; /* Espace pour le footer */
+  
+  @media (max-width: $breakpoint-sm) {
+    padding-bottom: 100px; /* Plus d'espace pour le footer sur mobile */
+  }
 }
 
 // Styles pour les boutons
